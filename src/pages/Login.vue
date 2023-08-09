@@ -52,7 +52,7 @@ export default defineComponent({
         localStorage.setItem('access_token', token)
         localStorage.setItem('username', userName)
         this.$store.commit('example/someMutation', true)
-        console.log(res)
+        // console.log(res)
         this.$router.push('/home')
       })
         .catch(erro => console.log(erro))
