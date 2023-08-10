@@ -53,7 +53,7 @@ export default defineComponent({
         localStorage.setItem('username', userName)
         this.$store.commit('example/someMutation', true)
         // console.log(res)
-        this.$router.push('/home')
+        this.$router.push('/restaurante')
       })
         .catch(erro => console.log(erro))
     }
