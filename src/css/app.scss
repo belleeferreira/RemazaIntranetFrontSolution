@@ -1,1 +1,179 @@
 // app global css in SCSS form
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+    *{
+        font-family: 'Lato';
+    }
+    /* menu */
+    /* Sidebar */
+    .q-page, .q-page-container {
+        background: var(--padro-color-white, #F9F9F9) !important;
+      }
+      
+      .structure-toolbar,
+      .structure-header {
+        // background: var(--padro-color-white, #F9F9F9) !important;
+        border: none;
+      }
+
+      .structure-toolbar{
+        height: 50px;
+      }
+      .q-drawer {
+        border-radius: 0px 15px 15px 0px;
+        width: 220px !important;
+        height: 490px !important;
+        background: var(--remaza-color-linear, linear-gradient(180deg, #CBDAFC 15.90%, #D1E7F3 85.77%)) !important;
+      }
+    //   .q-page-container{
+    //     // padding-left: 224px !important;
+    //     // padding-top: 300px !important;
+    //     background: var(--padro-color-white, #F9F9F9) !important;
+    //   }
+    /* logo */
+    .logo img{
+        min-width: 100%;
+        width: 50px;
+        padding: 20px;
+        object-fit: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    // .nav-link {
+    //     display: flex;
+    // }
+    /* pra tirar o azul do link */
+    .nav-link:hover,
+    .nav-link:focus {
+        color: var(--color-black);
+    }
+    // .opcao {
+    //     display: flex;
+    //     justify-content: space-between;
+    // }
+    // .sidebar {
+    //     text-decoration: none;
+    //     border-radius: 0px 16px 16px 0px;
+    //     border: none;
+    // }
+    .sidebar a {
+        color: var(--color-black);
+        font-size: 16px;
+        // margin-left: 4px;
+        padding: 10px;
+        text-decoration: none;
+    }
+    // .sidebar a:active {
+    //     color: var(--color-black);
+    // }
+    .sidebar a img {
+        // margin-right: 14px;
+        // margin-left: 10px;
+        padding: 3px;
+    }
+    .sidebar ul li {
+        padding: 12px 0px 0px 0px;
+    }
+    // .sidebar li .submenu {
+    //     list-style: none;
+    //     margin: 0;
+    //     padding: 0;
+    //     padding-left: 1rem;
+    //     padding-right: 1rem;
+    //     background-color: var(--color-hover);
+    // }
+    // .submenu a {
+    //     color: var(--color-white);
+    // }
+    // .sidebar a:hover {
+    //     color: var(--color-black);
+    // }
+
+    /* HEADER SUPERIOR */
+
+// body{
+//     overflow-x: hidden;
+// }
+
+// main{
+//     padding-left: 300px;
+//     margin-top: 110px;
+// }
+
+// *{
+//     font-family: 'Lato';
+// }
+
+/* header */
+// #header{     
+//     // z-index: 5;
+//     // position: fixed;   
+//     // width: 100%;    
+//     background:white;
+//     // top: 0;
+//     // right: 0;
+// }
+
+.header .user .userPhoto{
+    padding:  0.375rem 0;
+    /* background-color: #102155; */
+}
+
+/* #conteudo{
+   padding-top: 110px;
+} */
+
+.message, .notify, .user{
+    margin: 0px 12px;  
+}
+
+/*   para dar espaço na seta   */
+// .photo-user{
+//     margin-right: 5px;
+// }
+
+// .message, .notify{
+//     // display: flex;
+//     // justify-content: center;
+//     // align-items: center;
+//     // position: relative;
+// }
+
+/* bolinha da notificação */
+// .notify .iconN .notification,
+// .message .iconM .notification {
+//     background-color:var(--color-highlight);
+//     position: absolute;
+//     width: 8px;
+//     height: 8px;
+//     border-radius: 50%;
+//     top: 5px;
+// }
+
+// .user{
+//     margin-right: 30px;
+// }
+
+
+
+
+:root{
+    --color-red: #D55A67;
+    --color-primary:#00AEEF;
+    --color-secondary:#102155;
+    --color-highlight:#F48120;
+    --color-white:#fff;
+    --color-black:#0B0B0B;
+    --color-light-gray:#C0BEBF;
+    --color-gray:#928F91;
+    --color-bg:#E3F5FF;
+    --color-tag:#DFEAFF;
+    --color-br-gray:#F0F0F0;
+    --color-yellow:#FFF3D4;
+    --color-hover:#3F76DF;
+    --color-green:#B2DE27;
+    --color-cor1: #CBDAFC;
+    --color-cor2: #D1E7F3;
+    --color-linear: linear-gradient(#CBDAFC,#D1E7F3);
+    --color-bg-gray:#F0F0F0;
+}

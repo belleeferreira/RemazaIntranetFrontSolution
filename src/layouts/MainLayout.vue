@@ -1,19 +1,84 @@
 <template>
   <q-layout view="hHh Lpr lFf">
-    <q-header reveal bordered class="bg-primary text-white structure-header">
+    <q-header reveal bordered class="structure-header">
       <q-toolbar class="structure-toolbar">
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
+        <header>
+            <section class="header">
+              <div class="d-flex justify-content-end
+                align-items-center p-3">
+                <button style="width: 100px;" v-if="showLogout" outline rounded @click="logout()">Logout</button>
+                <div class="message">
+                  <div class="">
+                    <a href=""><img src="../assets/Mensagem.png" alt=""></a>
+                    <span class="notification"></span>
+                  </div>
+                </div>
+                <div class="notify">
+                  <div class="">
+                    <a href=""><img src="../assets/Alert.png" alt=""></a>
+                    <span class="notification"></span>
+                  </div>
+                </div>
+                <div class="user">
+                  <a class="btn dropdown userPhoto" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <img class="photo-user" src="../assets/Ellipse.png" alt="">
+                    <img src="../assets/dots-menu.png" alt="">
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">Link 1</a></li>
+                    <li><a class="dropdown-item" href="#">Link 2</a></li>
+                    <li><a class="dropdown-item" href="#">Link 3</a></li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </header>
         <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar>
+          <!-- <q-avatar class="img-menu">
+            <img src="../assets/Mensagem.png" alt="">
+            <img src="../assets/Mensagem.png" alt="">
+          </q-avatar> -->
           <button v-if="showLogout" outline rounded @click="logout()">Logout</button>
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
-    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered class="structure-layout">
+    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
       <!-- drawer content -->
-      <p>hduh</p>
+      <nav class="sidebar">
+        <div class="logo">
+          <img src="../assets/logo_remaza.png" alt="">
+        </div>
+        <div class="menu">
+          <ul class="nav flex-column" id="nav_accordion">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <img src="../assets/home.png" alt=""> Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <img src="../assets/user.png" alt="">
+                Colaboradores </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <img src="../assets/utensils-solid.png" alt="">
+                Restaurante
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <img src="../assets/bullhorn.png" alt=""> Comunicados e Avisos </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <img src="../assets/award-solid.png" alt=""> Normas </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </q-drawer>
     <q-page-container>
       <router-view />
@@ -23,7 +88,7 @@
 </template>
 
 <script>
-import { computed, defineComponent, ref } from 'vue'
+import { computed, onMounted, defineComponent, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router' // Importando o useRouter
 
@@ -46,6 +111,9 @@ export default defineComponent({
       store.commit('example/someMutation', false)
       router.push('/login') // redirecionar para a página de login
     }
+    onMounted(() => {
+      store.commit('example/someMutation', true)
+    })
     return {
       count,
       increment,
@@ -59,12 +127,4 @@ export default defineComponent({
   }
 })
 </script>
-<style scoped>
-.q-page{
-  background: var(--padro-color-white, #F9F9F9) !important;
-}
-.structure-toolbar, .structure-header{
-  background: var(--padro-color-white, #F9F9F9) !important;
-  border: none;
-}
-</style>
+<style></style>
