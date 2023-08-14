@@ -1,7 +1,6 @@
 <template>
-
       <main class="container structure  d-flex justify-content-center align-items-center">
-        <section class="col-xl-6 col-lg-8 col-md-8 structure-img">
+        <section class=" structure-img">
             <img class="col-xl-12 col-lg-12 col-md-12 " src="..//assets/Frame.png" alt="">
         </section>
         <section class="col-xl-6 col-lg-5 col-md-5 structure-entrar d-flex justify-content-center ">
@@ -20,14 +19,6 @@
             </div>
         </section>
     </main>
-        <!-- // <q-form class="row justify-center" @submit="login()">
-        //   <p class="col-12 text-h5 text-center">Login</p>
-        //   <div class="col-md-4 col-ms-6 col-xs-10 q-gutter-y-sm">
-        //     <div class="full-width q-pt-md">
-        //       <q-btn label="Login" color="primary" class="full-width" outline rounded type="submit"/>
-        //     </div>
-        //   </div>
-        // </q-form> -->
     </template>
 
 <script>
@@ -63,13 +54,13 @@ export default defineComponent({
 </script>
 
 <style>
-*{
+/* *{
   overflow: hidden;
   padding: 0;
   margin: 0;
-}
-body {
-  background: var(--remaza-color-linear, linear-gradient(180deg, #CBDAFC 15.90%, #D1E7F3 85.77%));
+} */
+body{
+  background: linear-gradient( #00AEEF, #102155);
 }
 
 .structure{
@@ -129,8 +120,10 @@ align-items: center;
 }
 
 .structure-entrar-Copyright p {
-  padding-top: 40px;
-  padding-left: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding-top: 40px; */
 }
 
 @media (max-width: 793px)
@@ -152,5 +145,26 @@ align-items: center;
   .structure{
     flex-wrap: wrap;
   }
+}
+
+:root{
+    --color-red: #D55A67;
+    --color-primary:#00AEEF;
+    --color-secondary:#102155;
+    --color-highlight:#F48120;
+    --color-white:#fff;
+    --color-black:#0B0B0B;
+    --color-light-gray:#C0BEBF;
+    --color-gray:#928F91;
+    --color-bg:#E3F5FF;
+    --color-tag:#DFEAFF;
+    --color-br-gray:#F0F0F0;
+    --color-yellow:#FFF3D4;
+    --color-hover:#3F76DF;
+    --color-green:#B2DE27;
+    --color-cor1: #CBDAFC;
+    --color-cor2: #D1E7F3;
+    --color-linear: linear-gradient(#CBDAFC,#D1E7F3);
+    --color-bg-gray:#F0F0F0;
 }
 </style>

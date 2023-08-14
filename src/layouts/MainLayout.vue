@@ -2,7 +2,7 @@
   <q-layout view="hHh Lpr lFf">
     <q-header reveal bordered class="structure-header">
       <q-toolbar class="structure-toolbar">
-        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
+        <q-btn class="q-btn-menu" dense flat round @click="toggleLeftDrawer"> <img src="../assets/cardapio.png" alt=""> </q-btn>
         <header>
           <section class="header">
             <div class="d-flex justify-content-end

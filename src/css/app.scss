@@ -11,7 +11,7 @@
     .q-page, .q-page-container {
         background: var(--padro-color-white, #F9F9F9) !important;
       }
-      
+
       .structure-toolbar,
       .structure-header {
         height: 60px;
@@ -21,14 +21,21 @@
       }
       .q-drawer {
         border-radius: 0px 15px 15px 0px;
+        max-width: 100% !important;
         width: 220px !important;
-        height: 500px !important;
+        height: 90vh !important;
         background: var(--remaza-color-linear, linear-gradient(180deg, #CBDAFC 15.90%, #D1E7F3 85.77%)) !important;
       }
       .q-page-container{
         // padding-left: 224px !important;
         padding-top: 100px !important;
         background: var(--padro-color-white, #F9F9F9) !important;
+      }
+
+      .q-btn-menu img{
+      width: 60px;
+      height: 20px;
+      object-fit: cover;
       }
     /* logo */
     .logo img{
@@ -106,10 +113,10 @@
 // }
 
 /* header */
-// #header{     
+// #header{
 //     // z-index: 5;
-//     // position: fixed;   
-//     // width: 100%;    
+//     // position: fixed;
+//     // width: 100%;
 //     background:white;
 //     // top: 0;
 //     // right: 0;
@@ -125,7 +132,7 @@
 } */
 
 .message, .notify, .user{
-    margin: 0px 12px;  
+    margin: 0px 12px;
 }
 
 /*   para dar espaço na seta   */
@@ -276,7 +283,7 @@ hr {
 
 @media (min-width: 1007px) {
     .q-drawer {
-        height: 450px !important;
+        height: 80vh !important;
       }
 }
 :root{
