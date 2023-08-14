@@ -4,37 +4,53 @@
       <q-toolbar class="structure-toolbar">
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
         <header>
-            <section class="header">
-              <div class="d-flex justify-content-end
+          <section class="header">
+            <div class="d-flex justify-content-end
                 align-items-center p-3">
-                <button style="width: 100px;" v-if="showLogout" outline rounded @click="logout()">Logout</button>
-                <div class="message">
-                  <div class="">
-                    <a href=""><img src="../assets/Mensagem.png" alt=""></a>
-                    <span class="notification"></span>
-                  </div>
-                </div>
-                <div class="notify">
-                  <div class="">
-                    <a href=""><img src="../assets/Alert.png" alt=""></a>
-                    <span class="notification"></span>
-                  </div>
-                </div>
-                <div class="user">
-                  <a class="btn dropdown userPhoto" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <img class="photo-user" src="../assets/Ellipse.png" alt="">
-                    <img src="../assets/dots-menu.png" alt="">
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">Link 1</a></li>
-                    <li><a class="dropdown-item" href="#">Link 2</a></li>
-                    <li><a class="dropdown-item" href="#">Link 3</a></li>
-                  </ul>
+              <div class="message">
+                <div class="">
+                  <a href=""><img src="../assets/Mensagem.png" alt=""></a>
+                  <span class="notification"></span>
                 </div>
               </div>
-            </section>
-          </header>
+              <div class="notify">
+                <div class="">
+                  <a href=""><img src="../assets/Alert.png" alt=""></a>
+                  <span class="notification"></span>
+                </div>
+              </div>
+              <div class="user">
+                <a class="btn dropdown userPhoto" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <img class="photo-user" src="../assets/Ellipse.png" alt="">
+                  <img src="../assets/dots-menu.png" alt="">
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <div class="dropdown-company-menu"> <img src="../assets/Company.png" alt="">
+                    <p>Alterar empresa</p>
+                  </div>
+                  <div class="select-dropdown"> <select class="form-select" aria-label="Default select example">
+                      <option selected>Selecione</option>
+                      <option value="1">Remaza</option>
+                      <option value="2">Moto Remaza</option>
+                      <option value="3">Daitan</option>
+                      <option value="3">Primarca</option>
+                      <option value="3">Websupply</option>
+                    </select> <input class="btn disable" type="submit" value="OK"> </div>
+                  <hr>
+                  <!-- <div class="dropdown-settings"> <img src="../assets/Settings.png" alt="">
+                    <p>Configurações</p>
+                  </div> -->
+                  <div class="dropdown-exit">
+                    <!-- <button v-if="showLogout" outline rounded @click="logout()"><img src="../assets/Logout.png" alt="">Sair</button> -->
+                    <img src="../assets/Logout.png" alt="">
+                    <p v-if="showLogout" outline rounded @click="logout()" >Sair</p>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </header>
         <q-toolbar-title>
           <!-- <q-avatar class="img-menu">
             <img src="../assets/Mensagem.png" alt="">

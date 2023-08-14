@@ -3,6 +3,9 @@
     *{
         font-family: 'Lato';
     }
+    body{
+        overflow: hidden;
+    }
     /* menu */
     /* Sidebar */
     .q-page, .q-page-container {
@@ -11,24 +14,22 @@
       
       .structure-toolbar,
       .structure-header {
-        // background: var(--padro-color-white, #F9F9F9) !important;
+        height: 60px;
+        padding-top: 3.5px;
+        background: var(--padro-color-white, #F9F9F9) !important;
         border: none;
-      }
-
-      .structure-toolbar{
-        height: 50px;
       }
       .q-drawer {
         border-radius: 0px 15px 15px 0px;
         width: 220px !important;
-        height: 490px !important;
+        height: 500px !important;
         background: var(--remaza-color-linear, linear-gradient(180deg, #CBDAFC 15.90%, #D1E7F3 85.77%)) !important;
       }
-    //   .q-page-container{
-    //     // padding-left: 224px !important;
-    //     // padding-top: 300px !important;
-    //     background: var(--padro-color-white, #F9F9F9) !important;
-    //   }
+      .q-page-container{
+        // padding-left: 224px !important;
+        padding-top: 100px !important;
+        background: var(--padro-color-white, #F9F9F9) !important;
+      }
     /* logo */
     .logo img{
         min-width: 100%;
@@ -154,9 +155,130 @@
 //     margin-right: 30px;
 // }
 
+.dropdown-user-admin {
+    max-width: 100%;
+    width: 290px;
+    height: 192px;
+    border: 1px solid var(--color-light-gray);
+    border-radius: 4px;
+}
+
+/* img do predio */
+.dropdown-company-menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+/* paragrafo do alterar empresa */
+.dropdown-company-menu p {
+    padding-left: 10px;
+    margin-top: 17px;
+    color: var(--color-black);
+    font-family: "Lato";
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* parte do select */
+.select-dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/* parte do select (tamanho e fonte) */
+.form-select {
+    max-width: 100%;
+    width: 110px;
+    height: 35px;
+    margin-left: 10;
+    font-family: "Lato";
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--color-black);
+}
+
+/* parte do select (input do OK) */
+.select-dropdown input {
+    width: 40px;
+    height: 35px;
+    border-radius: 4px;
+    padding-left: 9px;
+    background-color: var(--color-highlight);
+    color: var(--color-white);
+    margin-right: 1px;
+    font-family: "Lato";
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* parte do select (input do OK) */
+.select-dropdown input:hover {
+    background-color: var(--color-highlight);
+    color: var(--color-white);
+}
+
+/* linha divisoria */
+hr {
+    border-bottom: 100px;
+    color: #CFD4D9;
+}
+
+/* parte de configurações */
+// .dropdown-settings {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-evenly;
+//     margin-right: 79px;
+//     cursor: pointer;
+// }
+
+/* parte de configurações (img) */
+// .dropdown-settings img {
+//     transform: translate(5px, -15px);
+// }
+
+// /* parte de configurações (paragrafo) */
+// .dropdown-settings p {
+//     transform: translate(13px, -8px);
+//     color: var(--color-black);
+//     font-family: "Lato";
+//     font-size: 14px;
+//     font-weight: bold;
+// }
+
+/* parte de sair */
+.dropdown-exit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // margin-right: 100px;
+    cursor: pointer;
+}
+
+/* parte de sair(img) */
+.dropdown-exit img {
+    transform: translate( -40px, -15px);
+}
+
+/* parte de sair(paragrafo) */
+.dropdown-exit p {
+    transform: translate(-30px, -8px);
+    color: var(--color-black);
+    font-family: "Lato";
+    font-size: 14px;
+    font-weight: bold;
+}
 
 
 
+@media (min-width: 1007px) {
+    .q-drawer {
+        height: 450px !important;
+      }
+}
 :root{
     --color-red: #D55A67;
     --color-primary:#00AEEF;
