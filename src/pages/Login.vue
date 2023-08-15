@@ -1,25 +1,25 @@
 <template>
-      <main class="container structure  d-flex justify-content-center align-items-center">
-        <section class=" structure-img">
-            <img class="col-xl-12 col-lg-12 col-md-12 " src="..//assets/Frame.png" alt="">
-        </section>
-        <section class="col-xl-6 col-lg-5 col-md-5 structure-entrar d-flex justify-content-center ">
-            <div class="entrar">
-                <img class="imagem" src="../assets/logo_remaza.png" alt="">
-                <div class="introduce-left">
-                    <p>Seja bem-vindo!</p>
-                    <p>Para acessar a <span>intranet</span>, clique no botão abaixo:</p>
-                </div>
-                <q-form class="button-login" @submit="login()">
-                <q-btn label="Entrar" class="button"  type="submit"/>
-                </q-form>
-                <div class="structure-entrar-Copyright">
-                    <p>© Copyright 1998-2022 Empresas Remaza</p>
-                </div>
-            </div>
-        </section>
-    </main>
-    </template>
+  <main class="container structure  d-flex justify-content-center align-items-center">
+    <section class=" structure-img">
+      <img class="col-xl-12 col-lg-12 col-md-12 " src="../assets/Frame.png" alt="">
+    </section>
+    <section class="col-xl-6 col-lg-5 col-md-5 structure-entrar d-flex justify-content-center ">
+      <div class="entrar">
+        <img class="imagem" src="../assets/logo_remaza.png" alt="">
+        <div class="introduce-left">
+          <p>Seja bem-vindo!</p>
+          <p>Para acessar a <span>intranet</span>, clique no botão abaixo:</p>
+        </div>
+        <q-form class="button-login" @submit="login()">
+          <q-btn label="Entrar" class="button" type="submit" />
+        </q-form>
+        <div class="structure-entrar-Copyright">
+          <p>© Copyright 1998-2022 Empresas Remaza</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</template>
 
 <script>
 import { defineComponent } from 'vue'
@@ -59,31 +59,37 @@ export default defineComponent({
   padding: 0;
   margin: 0;
 } */
-body{
-  background: linear-gradient( #00AEEF, #102155);
-}
 
-.structure{
+.bgBody{
+background: linear-gradient(#CBDAFC, #D1E7F3);
+background-repeat: no-repeat;
+min-height: 100vh;
+}
+/* body {
+  background: var(--remaza-color-linear);
+} */
+
+.structure {
   margin-top: 10%;
   /* display: flex;
   justify-content: center;
   align-items: center; */
 }
 
-.structure-img{
+.structure-img {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.entrar{
-border-radius: 8px;
-background-color: white;
-justify-content: center;
-align-items: center;
+.entrar {
+  border-radius: 8px;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
 }
 
-.imagem{
+.imagem {
   min-width: 100%;
   width: 50px;
   padding: 20px;
@@ -93,15 +99,15 @@ align-items: center;
   align-items: center;
 }
 
-.introduce-left{
+.introduce-left {
   padding: 20px;
 }
 
-.introduce-left span{
+.introduce-left span {
   color: var(--remaza-color-hover, #3F76DF);
 }
 
-.button-login{
+.button-login {
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -126,45 +132,45 @@ align-items: center;
   /* padding-top: 40px; */
 }
 
-@media (max-width: 793px)
-{
-  .structure-img{
+@media (max-width: 793px) {
+  .structure-img {
     display: none;
   }
-  .structure-entrar{
+
+  .structure-entrar {
     margin-top: 10%;
   }
 }
 
-@media (max-width: 991px)
-{
-  .structure-img{
-    margin-right:30px;
+@media (max-width: 991px) {
+  .structure-img {
+    margin-right: 30px;
     width: 376px;
   }
-  .structure{
+
+  .structure {
     flex-wrap: wrap;
   }
 }
 
-:root{
-    --color-red: #D55A67;
-    --color-primary:#00AEEF;
-    --color-secondary:#102155;
-    --color-highlight:#F48120;
-    --color-white:#fff;
-    --color-black:#0B0B0B;
-    --color-light-gray:#C0BEBF;
-    --color-gray:#928F91;
-    --color-bg:#E3F5FF;
-    --color-tag:#DFEAFF;
-    --color-br-gray:#F0F0F0;
-    --color-yellow:#FFF3D4;
-    --color-hover:#3F76DF;
-    --color-green:#B2DE27;
-    --color-cor1: #CBDAFC;
-    --color-cor2: #D1E7F3;
-    --color-linear: linear-gradient(#CBDAFC,#D1E7F3);
-    --color-bg-gray:#F0F0F0;
+:root {
+  --color-red: #D55A67;
+  --color-primary: #00AEEF;
+  --color-secondary: #102155;
+  --color-highlight: #F48120;
+  --color-white: #fff;
+  --color-black: #0B0B0B;
+  --color-light-gray: #C0BEBF;
+  --color-gray: #928F91;
+  --color-bg: #E3F5FF;
+  --color-tag: #DFEAFF;
+  --color-br-gray: #F0F0F0;
+  --color-yellow: #FFF3D4;
+  --color-hover: #3F76DF;
+  --color-green: #B2DE27;
+  --color-cor1: #CBDAFC;
+  --color-cor2: #D1E7F3;
+  --color-linear: linear-gradient(#CBDAFC, #D1E7F3);
+  --color-bg-gray: #F0F0F0;
 }
 </style>
