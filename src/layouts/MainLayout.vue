@@ -8,14 +8,14 @@
             <div class="d-flex justify-content-end
                 align-items-center p-3">
               <div class="message">
-                <div class="">
-                  <a href=""><img src="../assets/Mensagem.png" alt=""></a>
+                <div class="icon-message">
+                  <a disabled href=""><img src="../assets/icon-message.png" alt=""></a>
                   <span class="notification"></span>
                 </div>
               </div>
               <div class="notify">
-                <div class="">
-                  <a href=""><img src="../assets/Alert.png" alt=""></a>
+                <div class="icon-notify">
+                  <a disabled href=""><img src="../assets/notify.png" alt=""></a>
                   <span class="notification"></span>
                 </div>
               </div>
@@ -62,7 +62,6 @@
     </q-header>
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
       <!-- drawer content -->
-      <nav class="sidebar">
         <div class="logo">
           <img src="../assets/logo_remaza.png" alt="">
         </div>
@@ -94,7 +93,6 @@
             </li>
           </ul>
         </div>
-      </nav>
     </q-drawer>
     <q-page-container>
       <router-view />
