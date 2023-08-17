@@ -23,7 +23,7 @@
                 <a class="btn dropdown userPhoto" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                   aria-expanded="false">
                   <img class="photo-user" src="../assets/Ellipse.png" alt="">
-                  <img src="../assets/dots-menu.png" alt="">
+                  <img class="dots-user" src="../assets/dots-menu.png" alt="">
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <div class="dropdown-company-menu"> <img src="../assets/Company.png" alt="">
@@ -41,10 +41,10 @@
                   <!-- <div class="dropdown-settings"> <img src="../assets/Settings.png" alt="">
                     <p>Configurações</p>
                   </div> -->
-                  <div class="dropdown-exit">
+                  <div v-if="showLogout" outline rounded @click="logout()" class="dropdown-exit">
                     <!-- <button v-if="showLogout" outline rounded @click="logout()"><img src="../assets/Logout.png" alt="">Sair</button> -->
                     <img src="../assets/Logout.png" alt="">
-                    <p v-if="showLogout" outline rounded @click="logout()" >Sair</p>
+                    <p >Sair</p>
                   </div>
                 </ul>
               </div>
