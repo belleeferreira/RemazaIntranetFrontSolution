@@ -24,6 +24,7 @@
 <script>
 import { defineComponent } from 'vue'
 import msalInstance from '../auth'
+import axios from 'axios'
 
 export default defineComponent({
   name: 'LoginVue',
