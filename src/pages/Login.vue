@@ -28,13 +28,15 @@ import msalInstance from '../auth'
 export default defineComponent({
   name: 'LoginVue',
   data () {
-    return {}
+    return {
+      userPhotoUrl: null
+    }
   },
   methods: {
     login () {
       // msalInstance.browserStorage.clear()
       const loginRequest = {
-        scopes: ['user.read'] // Add any additional scopes as needed
+        scopes: ['user.read', 'User.ReadWrite.All', 'User.Read.All'] // Add any additional scopes as needed
       }
 
       msalInstance.loginPopup(loginRequest).then(res => {
@@ -44,9 +46,26 @@ export default defineComponent({
         localStorage.setItem('username', userName)
         this.$store.commit('example/someMutation', true)
         // console.log(res)
+        this.getUserPhoto(token)
         this.$router.push('/restaurante')
       })
         .catch(erro => console.log(erro))
+    },
+    async getUserPhoto (accessToken) {
+      const graphApiUrl = 'https://graph.microsoft.com/v1.0/me/photo/$value'
+
+      try {
+        const response = await axios.get(graphApiUrl, {
+          headers: {
+            Authorization: `Bearer ${accessToken}` // Use this.accessToken
+          },
+          responseType: 'blob'
+        })
+        const userPhotoUrl = URL.createObjectURL(response.data)
+        this.$store.commit('example/AlterarValorFoto', userPhotoUrl)
+      } catch (error) {
+        console.error('Erro ao obter a foto do perfil:', error)
+      }
     }
   }
 })
