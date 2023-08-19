@@ -22,7 +22,7 @@
               <div class="user">
                 <a class="btn dropdown userPhoto" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  <img class="photo-user" src="../assets/Ellipse.png" alt="">
+                  <img class="user-photo" v-if="userPhoto" :src="userPhoto" alt="Foto do usuário">
                   <img class="dots-user" src="../assets/dots-menu.png" alt="">
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -118,6 +118,7 @@ export default defineComponent({
     }
 
     const showLogout = computed(() => store.state.example.isLoggedIn)
+    const userPhoto = computed(() => store.state.example.userPhotoUrl)
 
     const logout = () => {
       localStorage.removeItem('access_token')
@@ -136,7 +137,8 @@ export default defineComponent({
         leftDrawerOpen.value = !leftDrawerOpen.value
       },
       showLogout,
-      logout
+      logout,
+      userPhoto
     }
   }
 })
