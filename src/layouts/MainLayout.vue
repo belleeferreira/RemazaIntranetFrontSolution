@@ -97,6 +97,14 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+    <q-footer class="footer">
+        <q-toolbar-title class="footer">
+          <div>
+            <p>© Copyright 1998-{{ currentYear }} Empresas Remaza</p>
+          </div>
+        </q-toolbar-title>
+    </q-footer>
+
   </q-layout>
   <!-- <button v-if="showLogout" outline rounded @click="logout()">Logout</button> -->
 </template>
@@ -138,7 +146,8 @@ export default defineComponent({
       },
       showLogout,
       logout,
-      userPhoto
+      userPhoto,
+      currentYear: new Date().getFullYear()
     }
   }
 })

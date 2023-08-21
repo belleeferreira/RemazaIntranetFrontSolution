@@ -28,7 +28,7 @@
         border: none;
         max-width: 100% !important;
         width: 220px !important;
-        height: 90vh !important;
+        height: 100px !important;
         background: var(--remaza-color-linear, linear-gradient(180deg, #CBDAFC 15.90%, #D1E7F3 85.77%)) !important;
       }
       .q-page-container{
@@ -295,14 +295,27 @@ hr {
     font-weight: bold;
 }
 
+.footer{
+    background-color:var(--padro-color-white, #F9F9F9);
+    color: var(--remaza-color-secondary, #102155);
+    font-family: Lato;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    height: 5vh !important;
+}
 
 
 @media (min-width: 1007px) {
     .q-drawer {
-        height: 80vh !important;
+        height: 89vh !important;
       }
       .q-btn-menu img{
         display: none;
+        }
+        .footer{
+            height: 6vh !important;
         }
 }
 
