@@ -67,12 +67,12 @@
         </div>
         <div class="menu">
           <ul class="nav flex-column" id="nav_accordion">
-            <li class="nav-item">
+            <li disabled  class="nav-item">
               <a class="nav-link" href="#">
                 <img src="../assets/home.png" alt=""> Home
               </a>
             </li>
-            <li class="nav-item">
+            <li disabled class="nav-item">
               <a class="nav-link" href="#">
                 <img src="../assets/user.png" alt="">
                 Colaboradores </a>
@@ -83,11 +83,11 @@
                 Restaurante
               </a>
             </li>
-            <li class="nav-item">
+            <li disabled class="nav-item">
               <a class="nav-link" href="#">
                 <img src="../assets/bullhorn.png" alt=""> Comunicados e Avisos </a>
             </li>
-            <li class="nav-item">
+            <li disabled class="nav-item">
               <a class="nav-link" href="#">
                 <img src="../assets/award-solid.png" alt=""> Normas </a>
             </li>

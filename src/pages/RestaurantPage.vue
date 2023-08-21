@@ -13,6 +13,5 @@ export default defineComponent({
       return localStorage.getItem('username')
     }
   }
-
 })
 </script>
