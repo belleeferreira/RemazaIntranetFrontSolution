@@ -1,11 +1,11 @@
 <template>
   <main class="container structure  d-flex justify-content-center align-items-center">
     <section class=" structure-img">
-      <img class="col-xl-12 col-lg-12 col-md-12 " src="../assets/Frame.png" alt="">
+      <img class="col-xl-12 col-lg-12 col-md-12 " src="../assets/login/Frame.png" alt="">
     </section>
     <section class="col-xl-6 col-lg-5 col-md-5 structure-entrar d-flex justify-content-center ">
       <div class="entrar">
-        <img class="imagem" src="../assets/logo_remaza.png" alt="">
+        <img class="imagem" src="../assets/login/logo_remaza.png" alt="">
         <div class="introduce-left">
           <p>Seja bem-vindo!</p>
           <p>Para acessar a <span>intranet</span>, clique no botão abaixo:</p>
@@ -14,7 +14,7 @@
           <q-btn label="Entrar" class="button" type="submit" />
         </q-form>
         <div class="structure-entrar-Copyright">
-          <p>© Copyright 1998-2022 Empresas Remaza</p>
+          <p>© Copyright 1998-{{ currentYear }} Empresas Remaza</p>
         </div>
       </div>
     </section>
@@ -30,7 +30,8 @@ export default defineComponent({
   name: 'LoginVue',
   data () {
     return {
-      userPhotoUrl: null
+      userPhotoUrl: null,
+      currentYear: new Date().getFullYear()
     }
   },
   methods: {
