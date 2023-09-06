@@ -1,8 +1,8 @@
 <!-- conteudo principal -->
 <template id="conteudo">
   <div class="row">
-    <div class="col-sm-12 col-md-9 col-lg-12">
-      <div class="row my-3">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="row ">
         <div class="bemvindo col-sm-12 col-md-12 col-lg-12">
           <aside>
             <div class="container">
@@ -10,9 +10,10 @@
                 <img src="../assets/utensils-orange.png" alt="" />
                 <h1><strong>Restaurante</strong></h1>
               </span>
+              <a class="link-home" href="#">Home</a><img src="../assets/chevron-right.png" alt=""><a class="second-link" href="#">Restaurante</a>
               <span class="iconText buttonNotification">
                 <strong>
-                  <p>Cardápio da semana: 05/12/2022 - 09/12/2022</p>
+                  <h3>Cardápio da semana: 05/12/2022 - 09/12/2022</h3>
                 </strong>
                 <button
                   class="buttonActivateNotification"
@@ -33,8 +34,8 @@
       </div>
       <!--
                     paginação para o dias da semana que mostra o cardapio-->
-      <div class="lala row my-1">
-        <div class="col-sm-12 col-md-6 col-lg-12">
+      <div class="row">
+        <div class="col-sm-12 col-lg-12">
           <div class="p-3">
             <ul class="navigationWeeks">
               <li class="navigationWeeksTrue">
@@ -72,8 +73,8 @@
         </div>
       </div>
       <!-- Cardapio -->
-      <div class="col-sm-12 col-md-6 col-lg-12">
-        <div class="restaurant-menu p-3">
+      <div class="col-sm-12 col-lg-12">
+        <div class="restaurant-menu p-1">
           <table class="dishes">
             <tr>
               <th class="title">PRATO PRINCIPAL</th>
@@ -98,14 +99,34 @@
           </table>
         </div>
       </div>
+      <footer>
+        <div>
+            <p>© Copyright 1998-{{ currentYear }} Empresas Remaza</p>
+          </div>
+      </footer>
     </div>
   </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
+import { useStore } from 'vuex'
+// import { useRouter } from 'vue-router' // Importando o useRouter
 export default defineComponent({
-  name: 'RestaurantPage'
+  name: 'RestaurantPage',
+  setup () {
+    const store = useStore()
+    // const router = useRouter()
+    const count = computed(() => store.state.count)
+    const increment = () => {
+      store.commit('increment')
+    }
+    return {
+      count,
+      increment,
+      currentYear: new Date().getFullYear()
+    }
+  }
   // computed: {
   //   userName () {
   //     return localStorage.getItem('username')
@@ -125,13 +146,7 @@ body {
   flex-direction: row;
   gap: 12px;
   align-items: center;
-}
-
-.container {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  margin-right: 16%;
+  margin-top: 3px;
 }
 
 .iconText h1 {
@@ -143,14 +158,46 @@ body {
   color: #3f76df;
 }
 
-.container .buttonActivateNotification {
+.link-home{
+color: var(--remaza-color-highlight, #F48120);
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: -0.32px;
+text-decoration-line: underline;
+}
+
+.second-link{
+color: var(--padro-color-black, #0B0B0B);
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: -0.32px;
+text-decoration-line: none;
+}
+
+strong h3{
+  color: var(--remaza-color-secondary, #102155);
+  font-family: Lato;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.buttonActivateNotification {
   background: #f48120;
   border-radius: 4px;
   color: #fff;
   font-size: 13px;
   padding: 8px 12px;
   border: none;
-  transform: translate(190px, 0px);
+  position: relative;
+  margin-right: 30px;
 }
 
 .buttonNotification {
@@ -162,24 +209,31 @@ body {
   justify-content: center;
   align-items: center;
   padding-right: 10px;
+  padding-bottom: 2px;
 }
 
 .navigationWeeks {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: center;;
   align-items: center;
-  /* */
+  flex-wrap: wrap;
+  width: 100%;
+  /* margin-right: 340px; */
+  /* margin: 0px; */
   font-weight: 700;
+  /* margin-right: 55px; */
+  transform: translate(0px, -15px);
+  /* margin-top: -25px; */
 }
 
 .navigationWeeks li {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   align-items: center;
-  margin: 2%;
-  max-width: 100%;
+  /* margin: 20px; */
+  margin-right: 40px;
   width: 49px;
   height: 75px;
 }
@@ -187,11 +241,14 @@ body {
   background-color: #3f76df;
   color: #fff;
   border-radius: 38px;
-  /* display: flex;
-  flex-direction: column; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
-.row .p-3 .navigationWeeks p {
+.navigationWeeks p {
   margin: 0;
   text-align: center;
 }
@@ -218,6 +275,10 @@ button .iconActivateNotification {
 }
 
 /* Desenvolvedora: Veronica  */
+.restaurant-menu{
+  width: 100%;
+  transform: translate(-20px, -25px);
+}
 
 .restaurant-menu .dishes .title {
     color: #102155;
@@ -228,28 +289,23 @@ button .iconActivateNotification {
     font-weight: 700;
     font-size: 16px;
 }
-.restaurant-menu{
-    margin-right: 40px;
-}
 
-.restaurant-menu .dishes .description {
+.description {
     border-radius: 13px;
     text-align: left;
     font-size: 15px;
     font-weight: 700;
-    width: 100%;
     line-height: 16px;
     background-color: #DFEAFF;
     padding-inline: 20px;
 }
-
-.restaurant-menu .dishes {
-    min-width: 100%;
-    width: 999px;
+.dishes {
+    width: 100%;
     padding: 0px;
     display: static;
     border-collapse: separate;
     border-spacing: 8px;
+    /* margin-top: -60px; */
 }
 
 /* .modal .modal-dialog .modal-content .icon-alert {
@@ -312,22 +368,7 @@ button .iconActivateNotification {
     margin-right: 5px;
 } */
 
-@media (max-width: 1007px) {
-  .buttonNotification {
-    /* display: flex;
-    justify-content: space-between;
-    align-items: center; */
-  }
-  .buttonActivateNotification {
-    /* display: flex;
-    justify-content: space-between;
-    align-items: center; */
-  }
-  .navigationWeeksTrue {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 10px;
-  }
+@media (min-width: 1007px) {
+
 }
 </style>

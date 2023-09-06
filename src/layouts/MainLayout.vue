@@ -78,7 +78,7 @@
                 Colaboradores </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link restaurante" href="#">
                 <img src="../assets/nav/utensils-solid.png" alt="">
                 Restaurante
               </a>

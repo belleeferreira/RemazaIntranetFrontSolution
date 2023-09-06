@@ -1,113 +1,34 @@
 // app global css in SCSS form
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
-    *{
-        font-family: 'Lato';
-    }
-    body{
-        overflow: hidden;
-    }
-    /* menu */
-    /* Sidebar */
-    // .q-page, .q-page-container {
-    //     border: none;
-    //     background: var(--padro-color-white, #F9F9F9) !important;
-    //   }
-    // parte do menu
-      .structure-toolbar,
-      .structure-header{
-        height: 60px;
-        background: var(--padro-color-white, #F9F9F9) !important;
-        border: none;
-      }
 
-     // parte do menu
-      .structure-toolbar{
-        padding-top: 22px;
-        border: none;
-      }
-     // parte do aside
-      .q-drawer{
-        border-radius: 0px 15px 15px 0px;
-        border: none;
-        max-width: 100% !important;
-        width: 220px !important;
-        height: 80vh !important;
-        background: var(--remaza-color-linear, linear-gradient(180deg, #CBDAFC 15.90%, #D1E7F3 85.77%)) !important;
-      }
+* {
+    font-family: 'Lato';
+}
 
-       // parte da página
-      .q-page-container{
-        // padding-left: 224px !important;
-        border: none;
-        padding-top: 100px !important;
-        background: var(--padro-color-white, #F9F9F9) !important;
-      }
-       // parte do botão 'hamburguer'
-      .q-btn-menu img{
-      width: 60px;
-      height: 20px;
-      object-fit: cover;
-      }
-    /* logo */
-    .logo img{
-        min-width: 100%;
-        width: 50px;
-        padding: 20px;
-        object-fit: cover;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    /* pra tirar o azul do link */
-    .nav-link:hover,
-    .nav-link:focus {
-        color: var(--color-black);
-    }
+body {
+    overflow: hidden;
+}
 
-       // parte do aisde (links)
-    .menu a {
-        color: var(--color-secondary);
-        font-size: 16px;
-        font-weight: 600;
-        margin-left: 4px;
-        padding: 10px;
-        text-decoration: none;
-    }
-       // parte do aisde (links)
-    .menu a:active {
-        color: var(--color-black);
-    }
-       // parte do aisde (imagens ao lado dos links)
-    .menu a img {
-        // margin-right: 14px;
-        // margin-left: 10px;
-        padding: 3px;
-    }
-       // parte do aisde (links)
-    .menu ul li {
-        padding: 12px 0px 0px 0px;
-    }
-       // parte do menu (parte do user)
-   .header .user .userPhoto{
-    padding:  0.375rem 0;
-    object-fit: cover;
-    // background-color: #102155;
-   }
-   .header{
-    margin-right: 50px;
-   }
-       // parte do menu (parte do user)
-    .user-photo{
+.user-photo {
     width: 48px;
     height: 48px;
     border-radius: 48px;
-    }
+    // padding: 0.375rem 0;
+    // object-fit: cover;
+}
+
+.header .user .userPhoto {
+    padding: 0.375rem 0;
+    object-fit: cover;
+}
 
 /* #conteudo{
-   padding-top: 110px;
-} */
+       padding-top: 110px;
+    } */
 
-.message, .notify, .user{
+.message,
+.notify,
+.user {
     margin: 0px 12px;
 }
 
@@ -115,8 +36,9 @@
 // .photo-user{
 //     margin-right: 5px;
 // }
-       // parte do menu (parte das mensagens e notificação)
-.message, .notify{
+// parte do menu (parte das mensagens e notificação)
+.message,
+.notify {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -132,7 +54,7 @@
 /* bolinha da notificação */
 .notify .icon-notify .notification,
 .message .icon-message .notification {
-    background-color:var(--color-highlight);
+    background-color: var(--color-highlight);
     position: absolute;
     width: 8px;
     height: 8px;
@@ -140,7 +62,7 @@
     bottom: 34px;
 }
 
-       // parte do menu (parte do dropdown)
+// parte do menu (parte do dropdown)
 .dropdown-user-admin {
     max-width: 100%;
     width: 290px;
@@ -223,7 +145,7 @@ hr {
 
 /* parte de sair(img) */
 .dropdown-exit img {
-    transform: translate( -40px, -15px);
+    transform: translate(-40px, -15px);
 }
 
 /* parte de sair(paragrafo) */
@@ -233,6 +155,100 @@ hr {
     font-family: "Lato";
     font-size: 14px;
     font-weight: bold;
+}
+
+/* menu */
+/* Sidebar */
+// .q-page, .q-page-container {
+//     border: none;
+//     background: var(--padro-color-white, #F9F9F9) !important;
+//   }
+// parte do menu
+.structure-toolbar,
+.structure-header {
+    height: 30px;
+    background: var(--padro-color-white, #F9F9F9) !important;
+    border: none;
+}
+
+// parte do menu
+.structure-toolbar {
+    padding-top: 23px;
+    border: none;
+}
+
+// parte do aside
+.q-drawer {
+    z-index: 2000;
+    border-radius: 0px 15px 15px 0px;
+    border: none;
+    max-width: 100% !important;
+    width: 220px !important;
+    height: 80vh !important;
+    background: var(--remaza-color-linear, linear-gradient( #CBDAFC, #D1E7F3)) !important;
+}
+
+// parte da página
+.q-page-container {
+    // padding-left: 224px !important;
+    border: none;
+    padding-top: 56px !important;
+    background: var(--padro-color-white, #F9F9F9) !important;
+}
+
+// parte do botão 'hamburguer'
+.q-btn-menu img {
+    width: 60px;
+    height: 20px;
+    object-fit: cover;
+}
+
+/* logo */
+.logo img {
+    min-width: 100%;
+    width: 50px;
+    padding: 23px;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* pra tirar o azul do link */
+.nav-link:hover,
+.nav-link:focus {
+    color: var(--color-black);
+}
+.menu{
+    margin-top: 15px;
+}
+// parte do aisde (links)
+.menu a {
+    color: var(--color-secondary);
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 4px;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.restaurante{
+    background-color: var(--remaza-color-tag, #DFEAFF);
+}
+
+// parte do aisde (links)
+.menu a:active {
+    color: var(--color-black);
+}
+
+// parte do aisde (imagens ao lado dos links)
+.menu a img {
+    padding: 3px;
+}
+
+// parte do aisde (links)
+.menu ul li {
+    padding: 12px 0px 0px 0px;
 }
 
 // .footer{
@@ -249,39 +265,41 @@ hr {
 
 @media (min-width: 1007px) {
     .q-drawer {
-        height: 89vh !important;
-      }
-      .q-btn-menu img{
+        height: 91vh !important;
+    }
+
+    .q-btn-menu img {
         display: none;
-        }
+    }
 }
 
 @media (max-width: 318px) {
-    .message{
+    .message {
         display: none;
     }
-    .notify{
+
+    .notify {
         display: none;
     }
 }
 
-:root{
+:root {
     --color-red: #D55A67;
-    --color-primary:#00AEEF;
-    --color-secondary:#102155;
-    --color-highlight:#F48120;
-    --color-white:#fff;
-    --color-black:#0B0B0B;
-    --color-light-gray:#C0BEBF;
-    --color-gray:#928F91;
-    --color-bg:#E3F5FF;
-    --color-tag:#DFEAFF;
-    --color-br-gray:#F0F0F0;
-    --color-yellow:#FFF3D4;
-    --color-hover:#3F76DF;
-    --color-green:#B2DE27;
+    --color-primary: #00AEEF;
+    --color-secondary: #102155;
+    --color-highlight: #F48120;
+    --color-white: #fff;
+    --color-black: #0B0B0B;
+    --color-light-gray: #C0BEBF;
+    --color-gray: #928F91;
+    --color-bg: #E3F5FF;
+    --color-tag: #DFEAFF;
+    --color-br-gray: #F0F0F0;
+    --color-yellow: #FFF3D4;
+    --color-hover: #3F76DF;
+    --color-green: #B2DE27;
     --color-cor1: #CBDAFC;
     --color-cor2: #D1E7F3;
-    --color-linear: linear-gradient(#CBDAFC,#D1E7F3);
-    --color-bg-gray:#F0F0F0;
+    --color-linear: linear-gradient(#CBDAFC, #D1E7F3);
+    --color-bg-gray: #F0F0F0;
 }
