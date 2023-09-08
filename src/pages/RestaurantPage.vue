@@ -16,6 +16,7 @@
                   <h3>Cardápio da semana: 05/12/2022 - 09/12/2022</h3>
                 </strong>
                 <button
+                  disabled
                   class="buttonActivateNotification"
                   type="button"
                   data-bs-toggle="modal"
@@ -32,8 +33,7 @@
           </aside>
         </div>
       </div>
-      <!--
-                    paginação para o dias da semana que mostra o cardapio-->
+      <!--paginação para o dias da semana que mostra o cardapio-->
       <div class="row">
         <div class="col-sm-12 col-lg-12">
           <div class="p-3">
@@ -105,6 +105,68 @@
           </div>
       </footer>
     </div>
+    <!-- Modal de seleção de Notificação -->
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-radius: 10px">
+                <div class="modal-header">
+                    <img class="icon-alert" src="../assets/bellOrange.png">
+                    <h5 class="modal-title" id="exampleModalLabel">Configurar notificações</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Habilitar Notificação (Inclusão e
+                        Alterações)</label>
+                </div>
+                <div class="form-select-modal">
+                    <div>
+                        <p>Frequência de envio: </p>
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            <label for="flexSelectDefault" class="form-select-label">
+                                <option selected>Selecione</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </label>
+                        </select>
+                    </div>
+                    <div class="form-hours-time">
+                        <p>Horário do envio: </p>
+                        <input class="form-hours" type="time">
+                    </div>
+                </div>
+                <div class="form-check-modal">
+                    <div>
+                        <div>
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked1">
+                            <label class="form-check-label" for="flexCheckChecked">
+                                <img class="icon-email alignment" src="../assets/emailFilledBlue.png">
+                                Notificar por e-mail: xxxxxxxxx@websupply.com.br
+                            </label>
+                        </div>
+                        <div>
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">
+
+                                <img class="icon-teams alignment" src="../assets/teamsBlue.png">
+                                Notificar por Microsoft: Teams
+                            </label>
+                        </div>
+                        <div>
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">
+
+                                <img class="icon-whatsapp alignment" src="../assets/whatsapp.png">
+                                Notificar por WhatsApp (11) 99999-0900
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -135,18 +197,22 @@ export default defineComponent({
 })
 </script>
  <style>
-* {
-  margin: 0;
-}
+/*  */
 body {
   background: var(--padro-color-white, #f9f9f9) !important;
+}
+
+.container{
+  max-width: 100%;
+  /* height: 15vh; */
 }
 .iconText {
   display: flex;
   flex-direction: row;
   gap: 12px;
   align-items: center;
-  margin-top: 3px;
+  margin-top: 8px;
+  width: 100%;
 }
 
 .iconText h1 {
@@ -197,7 +263,7 @@ strong h3{
   padding: 8px 12px;
   border: none;
   position: relative;
-  margin-right: 30px;
+  margin-right: 18px;
 }
 
 .buttonNotification {
@@ -219,11 +285,12 @@ strong h3{
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
+  height: 10vh;
   /* margin-right: 340px; */
   /* margin: 0px; */
   font-weight: 700;
   /* margin-right: 55px; */
-  transform: translate(0px, -15px);
+  /* transform: translate(0px, -15px); */
   /* margin-top: -25px; */
 }
 
@@ -277,7 +344,7 @@ button .iconActivateNotification {
 /* Desenvolvedora: Veronica  */
 .restaurant-menu{
   width: 100%;
-  transform: translate(-20px, -25px);
+  transform: translate(-20px, -3vh);
 }
 
 .restaurant-menu .dishes .title {
@@ -308,67 +375,82 @@ button .iconActivateNotification {
     /* margin-top: -60px; */
 }
 
+footer{
+  margin-top: 20px;
+  /* height: 100vh; */
+}
+
 /* .modal .modal-dialog .modal-content .icon-alert {
     left: 20px;
     right: 10px;
     top: 7%;
 } */
 
-/* .modal .modal-dialog .modal-content .modal-header {
-    margin: 10px;
-} */
+.modal{
+  margin-top: 100px;
+}
 
-/* .modal .modal-dialog .modal-content .modal-title {
+.modal .modal-dialog .modal-content .modal-header {
+    margin: 10px;
+}
+
+.modal .modal-dialog .modal-content .modal-title {
     padding-inline: 10px;
     padding: 10px;
     color: #3F76DF;
-} */
+}
 
-/* .modal .modal-dialog .modal-content .form-check-modal {
+.modal .modal-dialog .modal-content .form-check-modal {
     margin: 20px;
     padding: 1px;
     margin-inline: 25px;
-} */
+}
 
-/* .modal .modal-dialog .modal-content .form-switch {
+.modal .modal-dialog .modal-content .form-switch {
     margin: 10px;
     font-size: large;
     margin-left: 25px;
-} */
+}
 
-/* .modal .modal-dialog .modal-content .form-select-modal :is(.form-hours, .form-select) {
+.modal .modal-dialog .modal-content .form-select-modal :is(.form-hours, .form-select) {
     width: 67%;
     margin-left: 15px;
     border: solid 1px #C0BEBF;
-} */
+}
 
-/* .modal .modal-dialog .modal-content .form-select-modal .form-select {
+.modal .modal-dialog .modal-content .form-select-modal .form-select {
     width: 67%;
-} */
+}
 
-/* .modal .modal-dialog .modal-content .form-select-modal .form-hours{
+.modal .modal-dialog .modal-content .form-select-modal .form-hours{
     border-radius: 4px;
     height: 30px;
-} */
+}
 
-/* .modal .modal-dialog .modal-content .form-select-modal input.form-hours{
+.modal .modal-dialog .modal-content .form-select-modal input.form-hours{
     padding: 8px;
     font-size: medium;
-} */
+}
 
-/* .modal .modal-dialog .modal-content .form-select-modal div {
+.modal .modal-dialog .modal-content .form-select-modal div {
     display: flex;
     justify-content: flex-end;
     margin: 10px 10px;
-} */
+}
 
-/* .modal .modal-dialog .modal-content .form-check-modal .form-check-label .alignment{
+.modal .modal-dialog .modal-content .form-check-modal .form-check-label .alignment{
     margin-bottom: 5px;
     margin-left: 10px;
     margin-right: 5px;
+}
+
+@media (max-width: 2501px) {
+/* .container{
+  max-width: 100%;
 } */
-
-@media (min-width: 1007px) {
-
+/* .buttonNotification{
+ margin-top: 1px;
+ justify-content: space-between;
+} */
 }
 </style>

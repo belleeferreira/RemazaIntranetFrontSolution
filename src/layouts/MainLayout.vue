@@ -126,11 +126,13 @@ export default defineComponent({
     }
 
     const showLogout = computed(() => store.state.example.isLoggedIn)
-    const userPhoto = computed(() => store.state.example.userPhotoUrl)
-
+    const userPhoto = computed(() => store.state.example.userPhotoUrl || localStorage.setItem('userphoto', userPhoto))
+    // const userPhotoUrl = URL.createObjectURL(response.data)
+    // localStorage.setItem('userphoto', userPhotoUrl)
     const logout = () => {
       localStorage.removeItem('access_token')
       localStorage.removeItem('username')
+      localStorage.removeItem('userphoto')
       store.commit('example/someMutation', false)
       router.push('/login') // redirecionar para a página de login
     }

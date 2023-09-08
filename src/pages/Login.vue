@@ -47,7 +47,7 @@ export default defineComponent({
         localStorage.setItem('access_token', token)
         localStorage.setItem('username', userName)
         this.$store.commit('example/someMutation', true)
-        // console.log(res)
+        console.log(res)
         this.getUserPhoto(token)
         this.$router.push('/restaurante')
       })
@@ -64,7 +64,7 @@ export default defineComponent({
           responseType: 'blob'
         })
         const userPhotoUrl = URL.createObjectURL(response.data)
-        this.$store.commit('example/AlterarValorFoto', userPhotoUrl)
+        this.$store.commit('example/AlterarValorFoto', userPhotoUrl) || localStorage.setItem('userphoto', userPhotoUrl)
       } catch (error) {
         console.error('Erro ao obter a foto do perfil:', error)
       }
