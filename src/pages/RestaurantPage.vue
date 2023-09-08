@@ -1,9 +1,9 @@
 <!-- conteudo principal -->
 <template id="conteudo">
   <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="">
       <div class="row ">
-        <div class="bemvindo col-sm-12 col-md-12 col-lg-12">
+        <div class="bemvindo ">
           <aside>
             <div class="container">
               <span class="iconText">
@@ -35,19 +35,19 @@
       </div>
       <!--paginação para o dias da semana que mostra o cardapio-->
       <div class="row">
-        <div class="col-sm-12 col-lg-12">
+        <div class="">
           <div class="p-3">
             <ul class="navigationWeeks">
               <li class="navigationWeeksTrue">
                 <div>
                   <p>seg</p>
-                  <p class="whiteCircle">05</p>
+                  <p class="whiteCircle">{{ dataAtual }}</p>
                 </div>
               </li>
               <li>
                 <div>
                   <p>ter</p>
-                  <p class="whiteCircle">06</p>
+                  <p class="whiteCircle">{{ dataAtual }}</p>
                 </div>
               </li>
               <li>
@@ -73,7 +73,7 @@
         </div>
       </div>
       <!-- Cardapio -->
-      <div class="col-sm-12 col-lg-12">
+      <div class="">
         <div class="restaurant-menu p-1">
           <table class="dishes">
             <tr>
@@ -99,12 +99,12 @@
           </table>
         </div>
       </div>
-      <footer>
+    </div>
+    <footer class="footer">
         <div>
             <p>© Copyright 1998-{{ currentYear }} Empresas Remaza</p>
           </div>
       </footer>
-    </div>
     <!-- Modal de seleção de Notificação -->
    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -183,10 +183,14 @@ export default defineComponent({
     const increment = () => {
       store.commit('increment')
     }
+    const data = new Date()
+    const dia = String(data.getDate()).padStart(2, '0')
+    const dataAtual = `${dia}`
     return {
       count,
       increment,
-      currentYear: new Date().getFullYear()
+      currentYear: new Date().getFullYear(),
+      dataAtual
     }
   }
   // computed: {
@@ -211,7 +215,7 @@ body {
   flex-direction: row;
   gap: 12px;
   align-items: center;
-  margin-top: 8px;
+  /* margin-top: 8px; */
   width: 100%;
 }
 
@@ -260,7 +264,7 @@ strong h3{
   border-radius: 4px;
   color: #fff;
   font-size: 13px;
-  padding: 8px 12px;
+  padding: 5px 8px;
   border: none;
   position: relative;
   margin-right: 18px;
@@ -284,14 +288,14 @@ strong h3{
   justify-content: center;;
   align-items: center;
   flex-wrap: wrap;
-  width: 100%;
-  height: 10vh;
+  max-width: 100%;
+  height: 6vh;
   /* margin-right: 340px; */
   /* margin: 0px; */
   font-weight: 700;
   /* margin-right: 55px; */
   /* transform: translate(0px, -15px); */
-  /* margin-top: -25px; */
+  top: 0px;
 }
 
 .navigationWeeks li {
@@ -301,6 +305,7 @@ strong h3{
   align-items: center;
   /* margin: 20px; */
   margin-right: 40px;
+  /* transform: translate(0px, -20px); */
   width: 49px;
   height: 75px;
 }
@@ -311,7 +316,6 @@ strong h3{
   display: flex;
   align-items: center;
   justify-content: center;
-  display: flex;
   flex-direction: column;
 }
 
@@ -336,15 +340,16 @@ strong h3{
   color: #000;
 } */
 
-button .iconActivateNotification {
+/* button .iconActivateNotification {
   color: red;
   fill: red;
-}
+} */
 
 /* Desenvolvedora: Veronica  */
 .restaurant-menu{
   width: 100%;
-  transform: translate(-20px, -3vh);
+  /* margin-right: 22px; */
+  /* transform: translate(-20px, -10px); */
 }
 
 .restaurant-menu .dishes .title {
@@ -375,15 +380,19 @@ button .iconActivateNotification {
     /* margin-top: -60px; */
 }
 
-footer{
+/* footer{
   margin-top: 20px;
-  /* height: 100vh; */
-}
+} */
 
 /* .modal .modal-dialog .modal-content .icon-alert {
     left: 20px;
     right: 10px;
     top: 7%;
+} */
+
+/* .footer{
+  bottom: 2px;
+  height: 12vh;
 } */
 
 .modal{

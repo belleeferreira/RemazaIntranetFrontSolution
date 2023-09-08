@@ -8,7 +8,10 @@ import axios from 'axios'
 // "export default () => {}" function below (which runs individually
 // for each client)
 const api = axios.create({
-  baseURL: 'https://graph.microsoft.com/v1.0/me/photo/$value'
+  baseURL: 'https://graph.microsoft.com/v1.0/me/photo/$value',
+})
+const apiRemaza =axios.create({
+  baseURL: 'https://intranet.desenvolvimento.empresasremaza.com.br/v1'
 })
 
 export default boot(({ app }) => {
