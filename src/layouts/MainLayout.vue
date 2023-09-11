@@ -126,7 +126,7 @@ export default defineComponent({
     }
 
     const showLogout = computed(() => store.state.example.isLoggedIn)
-    const userPhoto = computed(() => store.state.example.userPhotoUrl || localStorage.setItem('userphoto', userPhoto))
+    const userPhoto = computed(() => store.state.example.userPhotoUrl || localStorage.getItem('userphoto', userPhoto))
     // const userPhotoUrl = URL.createObjectURL(response.data)
     // localStorage.setItem('userphoto', userPhotoUrl)
     const logout = () => {

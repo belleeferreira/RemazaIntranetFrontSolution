@@ -78,7 +78,7 @@
           <table class="dishes">
             <tr>
               <th class="title">PRATO PRINCIPAL</th>
-              <td class="description">Peito de frango empanado</td>
+              <td class="description">frango</td>
             </tr>
             <tr>
               <th class="title">OPCÃO FIT</th>
@@ -173,6 +173,7 @@
 <script>
 import { computed, defineComponent } from 'vue'
 import { useStore } from 'vuex'
+import axios from 'axios'
 // import { useRouter } from 'vue-router' // Importando o useRouter
 export default defineComponent({
   name: 'RestaurantPage',
@@ -186,11 +187,23 @@ export default defineComponent({
     const data = new Date()
     const dia = String(data.getDate()).padStart(2, '0')
     const dataAtual = `${dia}`
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('cardapio/Semanal')
+        data.value = response.data // Atualize os dados com a resposta da API
+      } catch (error) {
+        console.error('Erro ao buscar dados da API:', error)
+      }
+    }
+    onMounted(() => {
+      fetchData()
+    })
     return {
       count,
       increment,
       currentYear: new Date().getFullYear(),
-      dataAtual
+      dataAtual,
+      data
     }
   }
   // computed: {
