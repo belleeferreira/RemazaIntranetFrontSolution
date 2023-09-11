@@ -41,13 +41,13 @@
               <li class="navigationWeeksTrue">
                 <div>
                   <p>seg</p>
-                  <p class="whiteCircle">{{ dataAtual }}</p>
+                  <p class="whiteCircle">3</p>
                 </div>
               </li>
               <li>
                 <div>
                   <p>ter</p>
-                  <p class="whiteCircle">{{ dataAtual }}</p>
+                  <p class="whiteCircle">3</p>
                 </div>
               </li>
               <li>
@@ -78,7 +78,7 @@
           <table class="dishes">
             <tr>
               <th class="title">PRATO PRINCIPAL</th>
-              <td class="description">frango</td>
+              <td class="description"></td>
             </tr>
             <tr>
               <th class="title">OPCÃO FIT</th>
@@ -171,9 +171,10 @@
 </template>
 
 <script>
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, reactive, onMounted } from 'vue'
 import { useStore } from 'vuex'
-import axios from 'axios'
+// import apiRemaza from 'axios'
+import { apiRemaza } from 'src/boot/axios'
 // import { useRouter } from 'vue-router' // Importando o useRouter
 export default defineComponent({
   name: 'RestaurantPage',
@@ -184,26 +185,26 @@ export default defineComponent({
     const increment = () => {
       store.commit('increment')
     }
-    const data = new Date()
-    const dia = String(data.getDate()).padStart(2, '0')
-    const dataAtual = `${dia}`
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('cardapio/Semanal')
-        data.value = response.data // Atualize os dados com a resposta da API
-      } catch (error) {
-        console.error('Erro ao buscar dados da API:', error)
-      }
-    }
-    onMounted(() => {
-      fetchData()
+    const data = reactive({
+      restaurantes: [
+        // data = "",
+        // itens = [
+        //   label = '',
+        //   valor = ''
+        // ]
+      ]
+    })
+
+    onMounted(async () => {
+      const response = await apiRemaza.get('cardapio/Semanal/1')
+      data.apiRemaza = response.data
+      console.log(response.data)
     })
     return {
       count,
       increment,
-      currentYear: new Date().getFullYear(),
-      dataAtual,
-      data
+      currentYear: new Date().getFullYear()
+      // ...toRef(data)
     }
   }
   // computed: {
