@@ -173,7 +173,6 @@
 <script>
 import { computed, defineComponent, reactive, onMounted } from 'vue'
 import { useStore } from 'vuex'
-// import apiRemaza from 'axios'
 import { apiRemaza } from 'src/boot/axios'
 // import { useRouter } from 'vue-router' // Importando o useRouter
 export default defineComponent({
@@ -186,13 +185,7 @@ export default defineComponent({
       store.commit('increment')
     }
     const data = reactive({
-      restaurantes: [
-        // data = "",
-        // itens = [
-        //   label = '',
-        //   valor = ''
-        // ]
-      ]
+      restaurantes: []
     })
 
     onMounted(async () => {

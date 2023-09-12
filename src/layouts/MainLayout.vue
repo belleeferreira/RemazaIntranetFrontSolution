@@ -29,14 +29,15 @@
                   <div class="dropdown-company-menu"> <img src="../assets/nav/Company.png" alt="">
                     <p>Alterar empresa</p>
                   </div>
-                  <div class="select-dropdown"> <select class="form-select" aria-label="Default select example">
+                  <div class="select-dropdown">
+                    <select v-model="opcaoSelecionada" class="form-select" aria-label="Default select example">
                       <option selected>Selecione</option>
                       <option value="1">Remaza</option>
                       <option value="2">Moto Remaza</option>
                       <option value="3">Daitan</option>
-                      <option value="3">Primarca</option>
-                      <option value="3">Websupply</option>
-                    </select> <input class="btn disable" type="submit" value="OK"> </div>
+                      <option value="4">Primarca</option>
+                      <option value="5">Websupply</option>
+                    </select> <input @click="gravarSelecao" class="btn disable" type="submit" value="OK"> </div>
                   <hr>
                   <!-- <div class="dropdown-settings"> <img src="../assets/Settings.png" alt="">
                     <p>Configurações</p>
@@ -118,13 +119,18 @@ export default defineComponent({
   name: 'MainLayout',
   setup () {
     const leftDrawerOpen = ref(false)
+    const opcaoSelecionada = ref('')
+    const opcaoGravada = ref('')
     const store = useStore()
     const router = useRouter()
     const count = computed(() => store.state.count)
     const increment = () => {
       store.commit('increment')
     }
-
+    const gravarSelecao = () => {
+      opcaoGravada.value = opcaoSelecionada.value
+      console.log(opcaoGravada.value)
+    }
     const showLogout = computed(() => store.state.example.isLoggedIn)
     const userPhoto = computed(() => store.state.example.userPhotoUrl)
     // const userPhotoUrl = URL.createObjectURL(response.data)
@@ -148,7 +154,10 @@ export default defineComponent({
       },
       showLogout,
       logout,
-      userPhoto
+      userPhoto,
+      opcaoSelecionada,
+      opcaoGravada,
+      gravarSelecao
       // currentYear: new Date().getFullYear()
     }
   }
