@@ -7,11 +7,20 @@ import axios from 'axios'
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
+let baseURL = window.location.origin
+
+if (baseURL.includes('localhost') || baseURL.includes('desenvolvimento')) {
+  baseURL = 'https://intranet.desenvolvimento.empresasremaza.com.br/v1'
+} else if (baseURL.includes('homologacao')) {
+  baseURL = 'https://intranet.desenvolvimento.empresasremaza.com.br/v1'
+} else {
+  baseURL = 'https://intranet.desenvolvimento.empresasremaza.com.br/v1'
+}
 const api = axios.create({
   baseURL: 'https://graph.microsoft.com/v1.0/me/photo/$value'
 })
 const apiRemaza = axios.create({
-  baseURL: 'https://intranet.desenvolvimento.empresasremaza.com.br/v1'
+  baseURL
 })
 
 export default boot(({ app }) => {

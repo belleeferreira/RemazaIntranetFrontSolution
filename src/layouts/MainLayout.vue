@@ -113,7 +113,8 @@
 <script>
 import { computed, onMounted, defineComponent, ref } from 'vue'
 import { useStore } from 'vuex'
-import { useRouter } from 'vue-router' // Importando o useRouter
+// import { useRouter } from 'vue-router' // Importando o useRouter
+import msalInstance from '../auth'
 
 export default defineComponent({
   name: 'MainLayout',
@@ -122,7 +123,7 @@ export default defineComponent({
     const opcaoSelecionada = ref('')
     const opcaoGravada = ref('')
     const store = useStore()
-    const router = useRouter()
+    // const router = useRouter()
     const count = computed(() => store.state.count)
     const increment = () => {
       store.commit('increment')
@@ -140,8 +141,10 @@ export default defineComponent({
       localStorage.removeItem('username')
       localStorage.removeItem('userphoto')
       store.commit('example/someMutation', false)
-      router.push('/login') // redirecionar para a página de login
+      // router.push('/login') // redirecionar para a página de login
+      msalInstance.logoutRedirect()
     }
+
     onMounted(() => {
       store.commit('example/someMutation', true)
     })

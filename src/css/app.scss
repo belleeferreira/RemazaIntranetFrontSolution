@@ -186,6 +186,11 @@ hr {
     width: 220px !important;
     height: 80vh !important;
     background: var(--remaza-color-linear, linear-gradient( #CBDAFC, #D1E7F3)) !important;
+    box-shadow: none;
+}
+
+.q-drawer--left.q-drawer--bordered {
+    border-right: none;
 }
 
 // parte da página

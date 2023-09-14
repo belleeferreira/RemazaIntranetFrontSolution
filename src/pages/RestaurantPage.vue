@@ -190,9 +190,10 @@ export default defineComponent({
 
     onMounted(async () => {
       const response = await apiRemaza.get('cardapio/Semanal/1')
-      data.apiRemaza = response.data
+      data.restaurantes = response.data
       console.log(response.data)
     })
+
     return {
       count,
       increment,
