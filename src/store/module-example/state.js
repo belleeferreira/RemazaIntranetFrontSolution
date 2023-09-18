@@ -1,6 +1,8 @@
 export default function () {
   return {
     isLoggedIn: '',
-    userPhotoUrl: ''
+    userPhotoUrl: '',
+    opcaoSelecionada: '1', // valor inicial
+    opcaoGravada: ''
   }
 }

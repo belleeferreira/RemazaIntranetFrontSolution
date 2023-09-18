@@ -64,7 +64,9 @@ export default defineComponent({
           responseType: 'blob'
         })
         const userPhotoUrl = URL.createObjectURL(response.data)
-        this.$store.commit('example/AlterarValorFoto', userPhotoUrl) || localStorage.setItem('userphoto', userPhotoUrl)
+        console.log(response)
+        this.$store.commit('example/AlterarValorFoto', userPhotoUrl)
+        localStorage.setItem('userphoto', userPhotoUrl)
       } catch (error) {
         console.error('Erro ao obter a foto do perfil:', error)
       }

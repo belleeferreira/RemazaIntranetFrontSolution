@@ -22,7 +22,7 @@
               <div class="user">
                 <a class="btn dropdown userPhoto" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  <img class="user-photo" v-if="userPhoto" :src="userPhoto" alt="Foto do usuário">
+                  <img class="user-photo" v-if="(userPhoto || userPhotoLocal)" :src="userPhoto || userPhotoLocal" alt="Foto do usuário">
                   <img class="dots-user" src="../assets/nav/dots-menu.png" alt="">
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -30,9 +30,9 @@
                     <p>Alterar empresa</p>
                   </div>
                   <div class="select-dropdown">
-                    <select v-model="opcaoSelecionada" class="form-select" aria-label="Default select example">
-                      <option selected>Selecione</option>
-                      <option value="1">Remaza</option>
+                    <select v-model="opcaoSelecionada" class="form-select" aria-label="Default select example" placeholder="Remaza">
+                      <!-- <option selected>Selecione</option> -->
+                      <option selected value="1">Remaza</option>
                       <option value="2">Moto Remaza</option>
                       <option value="3">Daitan</option>
                       <option value="4">Primarca</option>
@@ -121,19 +121,29 @@ export default defineComponent({
   setup () {
     const leftDrawerOpen = ref(false)
     const opcaoSelecionada = ref('')
-    const opcaoGravada = ref('')
+    // const opcaoGravada = ref('')
     const store = useStore()
     // const router = useRouter()
     const count = computed(() => store.state.count)
     const increment = () => {
       store.commit('increment')
     }
-    const gravarSelecao = () => {
-      opcaoGravada.value = opcaoSelecionada.value
-      console.log(opcaoGravada.value)
-    }
     const showLogout = computed(() => store.state.example.isLoggedIn)
     const userPhoto = computed(() => store.state.example.userPhotoUrl)
+    const userPhotoLocal = localStorage.getItem('userphoto')
+
+    // const showOpcaoSelecionada = computed(() => store.state.example.opcaoSelecionada)
+    // const showOpcaoGravada = computed(() => store.state.example.opcaoGravada)
+
+    const gravarSelecao = () => {
+      console.log(store)
+      // showOpcaoGravada.value = showOpcaoSelecionada.value
+      store.commit('example/AlterarValorOpcaoSelecionada', opcaoSelecionada.value)
+      // store.commit('example/AlterarValorOpcaoGravada', showOpcaoGravada.value)
+      console.log(opcaoSelecionada)
+      console.log(store)
+    }
+
     // const userPhotoUrl = URL.createObjectURL(response.data)
     // localStorage.setItem('userphoto', userPhotoUrl)
     const logout = () => {
@@ -147,6 +157,7 @@ export default defineComponent({
 
     onMounted(() => {
       store.commit('example/someMutation', true)
+      console.log(userPhoto, userPhotoLocal)
     })
     return {
       count,
@@ -158,8 +169,9 @@ export default defineComponent({
       showLogout,
       logout,
       userPhoto,
+      userPhotoLocal,
       opcaoSelecionada,
-      opcaoGravada,
+      // showOpcaoGravada,
       gravarSelecao
       // currentYear: new Date().getFullYear()
     }
