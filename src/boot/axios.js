@@ -12,7 +12,7 @@ let baseURL = window.location.origin
 if (baseURL.includes('localhost') || baseURL.includes('desenvolvimento')) {
   baseURL = 'https://intranet.desenvolvimento.empresasremaza.com.br/v1'
 } else if (baseURL.includes('homologacao')) {
-  baseURL = 'https://intranet.desenvolvimento.empresasremaza.com.br/v1'
+  baseURL = 'https://intranet.homologacao.empresasremaza.com.br/v1'
 } else {
   baseURL = 'https://intranet.desenvolvimento.empresasremaza.com.br/v1'
 }

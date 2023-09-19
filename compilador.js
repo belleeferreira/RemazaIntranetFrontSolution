@@ -14,7 +14,7 @@ function compilarEMover () {
     // Diretório de destino para mover os arquivos compilados
     let destino = process.argv[2]
     const dev = 'T:RemazaEmpresas.Intranet'
-    const hml = 'T:RemazaEmpresas.Intranet' // mudar quando tiver homolog
+    const hml = 'U:RemazaEmpresas.Intranet' // mudar quando tiver homolog
     if (destino === 'hml') {
       destino = hml
     } else {

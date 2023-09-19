@@ -16,7 +16,8 @@ if (baseURL.includes('localhost')) {
 } else if (baseURL.includes('desenvolvimento')) {
   msalConfig.auth.redirectUri = 'https://intranet.desenvolvimento.empresasremaza.com.br/home'
 } else if (baseURL.includes('homologacao')) {
-  msalConfig.auth.redirectUri = 'https://intranet.desenvolvimento.empresasremaza.com.br/home'
+  msalConfig.auth.redirectUri = 'https://intranet.homologacao.empresasremaza.com.br/'
+  msalConfig.auth.postLogoutRedirectUri = 'https://intranet.homologacao.empresasremaza.com.br/'
 } else {
   msalConfig.auth.redirectUri = 'https://intranet.desenvolvimento.empresasremaza.com.br/home'
 }
