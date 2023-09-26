@@ -10,62 +10,93 @@
                 <img src="../assets/utensils-orange.png" alt="" />
                 <h1><strong>Restaurante</strong></h1>
               </span>
-              <a class="link-home" href="#">Home</a><img src="../assets/chevron-right.png" alt=""><a class="second-link"
-                href="#">Restaurante</a>
-              <span class="iconText buttonNotification">
-                <strong>
-                  <h3>Cardápio da semana: {{ restaurantes ? restaurantes[0].data : "" }} - {{ restaurantes ? restaurantes[restaurantes.length - 1].data : "" }}</h3>
-                </strong>
+              <div class="container-links">
+                <div>
+                 <a class="link-home" href="#">Home</a><img src="../assets/chevron-right.png" alt=""><a class="second-link"
+                href="#">Restaurante</a></div>
                 <button disabled class="buttonActivateNotification" type="button" data-bs-toggle="modal"
                   data-bs-target="#exampleModal">
                   <img class="iconActivateNotification" src="../assets/notify-white.png" />
                   Ativar notificações
                 </button>
+              </div>
+              <span class="iconText buttonNotification">
+                <strong>
+                  <h3>Cardápio da semana: <b>{{ restaurantes ? restaurantes[0].data : "" }} - {{ restaurantes ?
+                    restaurantes[restaurantes.length - 1].data : "" }} </b></h3>
+                </strong>
+                <!-- <button disabled class="buttonActivateNotification" type="button" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal">
+                  <img class="iconActivateNotification" src="../assets/notify-white.png" />
+                  Ativar notificações
+                </button> -->
               </span>
             </div>
           </aside>
         </div>
       </div>
       <!--paginação para o dias da semana que mostra o cardapio-->
+
       <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 my-3 ">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li v-for="item in restaurantes" :key="item.data" class="nav-item" role="presentation">
+              <button @click="gravarSelecaoData(item)" class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane"
+                type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true"><p class="first-p">{{ getDayOfWeek(item.data)}}</p><p class="second-p">{{ item.data.slice(0, 2) }} {{ item.data.slice(2, 5) }} </p></button>
+            </li>
+            <!-- <li class="nav-item" role="presentation">
+              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane"
+                type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false"><p></p></button>
+            </li> -->
+            <!-- <li class="nav-item" role="presentation">
+              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane"
+                type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Circulares</button>
+            </li> -->
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+              tabindex="0">
+              <div class=" restaurant-menu p-1 content-dataTable">
+                <table id="example" class=" dishes display responsive wrap" style="width:100%">
+                  <!-- <thead class="dataTable-head">
+                    <tr>
+                      <th>Código</th>
+                      <th>Titulo</th>
+                      <th>Data da Versão</th>
+                      <th>Resumo</th>
+                      <th>Departamento</th>
+                      <th class="editing">Ação</th>
+                    </tr>
+                  </thead> -->
+                  <tbody>
+                    <tr v-for="item in cardapio" :key="item.label">
+                      <th class="title">{{ item.label }}</th>
+                      <td class="description">{{ item.valor }}</td>
+                      <!-- <td><img class="eye-icon" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                          src="../../assets/icons/eyesOrangeSmall.svg" alt="">
+                      </td> -->
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row">
         <div class="">
           <div class="p-3">
             <ul class="navigationWeeks">
               <li v-for="item in restaurantes" :key="item.data" :class="validarData(item.data)">
-                <div @click="gravarSelecaoData(item)">
-                  <p>seg</p> <!-- <{{item.data.semana}}> {{item.data}} -->
-                  <p class="whiteCircle">{{ item.data.slice(0, 2) }}</p> <!-- <{{item.data.dia}}> -->
+                <div  @click="gravarSelecaoData(item)">
+                  <p >{{ getDayOfWeek(item.data)}}</p>
+                  <p class="whiteCircle">{{ item.data.slice(0, 2) }}</p>
                 </div>
               </li>
-              <!-- <li>
-                <div>
-                  <p>ter</p>
-                  <p class="whiteCircle">3</p>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <p>qua</p>
-                  <p class="whiteCircle">07</p>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <p>qui</p>
-                  <p class="whiteCircle">08</p>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <p>sex</p>
-                  <p class="whiteCircle">09</p>
-                </div>
-              </li> -->
             </ul>
           </div>
         </div>
       </div>
-      <!-- Cardapio -->
       <div class="">
         <div class="restaurant-menu p-1">
           <table class="dishes">
@@ -73,25 +104,9 @@
               <th class="title">{{ item.label }}</th>
               <td class="description">{{ item.valor }}</td>
             </tr>
-            <!-- <tr>
-              <th class="title">OPCÃO FIT</th>
-              <td class="description">File de tilápia</td>
-            </tr>
-            <tr>
-              <th class="title">GUARNIÇÃO</th>
-              <td class="description">Creme de milho</td>
-            </tr>
-            <tr>
-              <th class="title">SALADAS</th>
-              <td class="description">Alface/Moyashi Mexicano</td>
-            </tr>
-            <tr>
-              <th class="title">SOBREMESA</th>
-              <td class="description">Melancia</td>
-            </tr> -->
           </table>
         </div>
-      </div>
+      </div> -->
     </div>
     <footer class="footer">
       <div>
@@ -203,6 +218,19 @@ export default defineComponent({
         return ''
       }
     }
+    const getDayOfWeek = (dateString) => {
+      const daysOfWeek = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
+      console.log(daysOfWeek)
+      const dia = dateString.slice(0, 2)
+      const mes = dateString.slice(3, 5)
+      const ano = dateString.slice(6, 10)
+      console.log(dia, mes, ano)
+      const date = new Date(ano, mes - 1, dia)
+      console.log(date)
+      const dayOfWeek = daysOfWeek[date.getDay()]
+      console.log(dayOfWeek)
+      return dayOfWeek
+    }
 
     const cardapio = ref([])
 
@@ -230,7 +258,13 @@ export default defineComponent({
       atualizarRestaurante,
       ...toRefs(data),
       validarData,
-      gravarSelecaoData
+      gravarSelecaoData,
+      getDayOfWeek
+      // date,
+      // dayOfWeek,
+      // dateList: data.restaurantes[0]
+      // diasDaSemana,
+      // diaSemana
     }
   }
   // computed: {
@@ -242,6 +276,7 @@ export default defineComponent({
 </script>
 <style>
 /*  */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 body {
   background: var(--padro-color-white, #f9f9f9) !important;
   overflow-x: hidden;
@@ -258,7 +293,7 @@ body {
   flex-direction: row;
   gap: 12px;
   align-items: center;
-  /* margin-top: 8px; */
+  margin-top: 65px;
   width: 100%;
   max-height: 100%;
 }
@@ -271,7 +306,14 @@ body {
   line-height: normal;
   color: #3f76df;
 }
+.container-links{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  max-height: 100%;
 
+}
 .link-home {
   color: var(--remaza-color-highlight, #F48120);
   font-family: Lato;
@@ -295,12 +337,30 @@ body {
 }
 
 strong h3 {
-  color: var(--remaza-color-secondary, #102155);
+  color: var(--color-white);
+  background-color: var(--color-secondary, #102155);
   font-family: Lato;
-  font-size: 15px;
+  font-size: 16px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
   line-height: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  width: 360px;
+  height: 39px;
+  top: 140px;
+  left: 17px;
+  border-radius: 8px;
+  padding: 10px;
+  gap: 10px;
+}
+
+strong b{
+  font-family: Lato;
+  font-weight: 700px;
+  font-size: 16px;
 }
 
 .buttonActivateNotification {
@@ -328,7 +388,7 @@ strong h3 {
   padding-bottom: 2px;
 }
 
-.navigationWeeks {
+/* .navigationWeeks {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -338,24 +398,24 @@ strong h3 {
   max-width: 100%;
   max-height: 100%;
   height: 106px;
-  /* overflow-x: scroll;
-  overflow-y: hidden; */
+  overflow-x: scroll;
+  overflow-y: hidden;
   font-weight: 700;
   top: 0px;
-}
+} */
 
-.navigationWeeks li {
+/* .navigationWeeks li {
   display: flex;
   flex-direction: row;
-  /* justify-content: space-evenly; */
+  justify-content: space-evenly;
   align-items: center;
-  /* margin: 20px; */
+  margin: 20px;
   margin-right: 40px;
-  /* transform: translate(0px, -20px); */
+   transform: translate(0px, -20px);
   width: 49px;
   height: 75px;
   cursor: pointer;
-}
+} */
 
 .row .p-3 .navigationWeeks .navigationWeeksTrue {
   background-color: #3f76df;
@@ -367,12 +427,12 @@ strong h3 {
   flex-direction: column;
 }
 
-.navigationWeeks p {
+/* .navigationWeeks p {
   margin: 0;
   text-align: center;
-}
+} */
 
-.whiteCircle {
+/* .whiteCircle {
   background-color: #fff;
   color: #000;
   width: 40px;
@@ -381,7 +441,7 @@ strong h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 /* .navigationWeeksFalse {
   background-color: #fff;
@@ -502,6 +562,122 @@ strong h3 {
   margin-bottom: 5px;
   margin-left: 10px;
   margin-right: 5px;
+}
+
+.nav-tabs .nav-link {
+  color: var(--color-black);
+  margin-bottom: calc(-4 * var(--bs-nav-tabs-border-width));
+  margin-left: 5px;
+  background-color: var(--color-hover);
+  color: white;
+  width: 220px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+p{
+  margin: 0 0 1px;
+}
+.first-p{
+  color: var(--remaza-color-secondary, #102155);
+  text-align: center;
+/* small/regular */
+  font-family: Lato;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.second-p{
+  color: var(--remaza-color-secondary, #102155);
+/* p/bold */
+  font-family: Lato;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+/* .nav-link >p{
+  display: flex;
+   align-content: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
+/* .nav-tabs li:nth-child(1) button:nth-child(1) {
+  margin: 0;
+} */
+
+.nav-tabs .nav-link.active {
+  background-color: var(--color-tag);
+  position: relative;
+  width: 120px;
+  height: 56px;
+}
+
+.nav-tabs .nav-link.active::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-hover);
+  left: 0;
+  bottom: 0;
+}
+
+td .eye-icon {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+td:nth-child(4) {
+  width: 25vw;
+  word-wrap: break-word;
+}
+
+.nav-tabs {
+  border: none;
+}
+
+.dataTables_wrapper {
+  border-radius: 0 8px 8px 8px;
+}
+
+#example {
+  /* display: flex; */
+  /* width: 1012px;
+  padding: 32px 30px 33px 30px;
+  justify-content: center;
+  align-items: center; */
+  border-radius: 0px 15px 15px 15px;
+  background: linear-gradient(#CBDAFC, #D1E7F3);
+}
+
+#example>thead>tr>th.sorting.sorting_asc.editing::before {
+  display: none;
+  opacity: 2;
+
+}
+
+#example>thead>tr>th.editing.sorting::before,
+#example>thead>tr>th.editing.sorting::after {
+  opacity: 0;
+}
+
+#example>thead>tr>th:nth-child(6)::before,
+#example>thead>tr>th:nth-child(6)::after {
+  opacity: 0;
+}
+
+tbody {
+  /* display: flex;
+  width: 1012px;
+  padding: 32px 30px 33px 30px;
+  justify-content: center;
+  align-items: center; */
+  border-radius: 0px 15px 15px 15px;
+  background: var(--remaza-color-linear, linear-gradient(#CBDAFC, #D1E7F3));
 }
 
 @media (max-width: 463px) {

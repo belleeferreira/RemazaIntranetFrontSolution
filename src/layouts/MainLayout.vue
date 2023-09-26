@@ -61,7 +61,7 @@
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
-    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
+    <q-drawer style="top: 30px;" show-if-above v-model="leftDrawerOpen" side="left" bordered>
       <!-- drawer content -->
         <div class="logo">
           <img src="../assets/login/logo_remaza.png" alt="">

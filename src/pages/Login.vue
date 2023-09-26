@@ -49,7 +49,7 @@ export default defineComponent({
         this.$store.commit('example/someMutation', true)
         console.log(res)
         this.getUserPhoto(token)
-        this.$router.push('/restaurante')
+        this.$router.push('/home')
       })
         .catch(erro => console.log(erro))
     },

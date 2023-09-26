@@ -8,6 +8,17 @@
 body {
     overflow: hidden;
 }
+.structure-toolbar,
+.structure-header {
+    height: 55px;
+    background: #F9F9F9 !important;
+}
+
+// parte do menu
+.structure-toolbar {
+    padding-top: 23px;
+    border: none;
+}
 
 .user-photo {
     width: 48px;
@@ -164,18 +175,7 @@ hr {
 //     background: var(--padro-color-white, #F9F9F9) !important;
 //   }
 // parte do menu
-.structure-toolbar,
-.structure-header {
-    height: 30px;
-    background: none !important;
-    border: none;
-}
 
-// parte do menu
-.structure-toolbar {
-    padding-top: 23px;
-    border: none;
-}
 
 // parte do aside
 .q-drawer {
@@ -191,16 +191,18 @@ hr {
 
 .q-drawer--left.q-drawer--bordered {
     border-right: none;
+    top: 30px !important;
 }
-
 // parte da página
 .q-page-container {
-    // padding-left: 224px !important;
+    //padding-left: 297px !important;
     border: none;
-    padding-top: 56px !important;
+    padding-top: 50px !important;
     background: var(--padro-color-white, #F9F9F9) !important;
 }
-
+q-page{
+    padding-left: 250px !important;
+}
 // parte do botão 'hamburguer'
 .q-btn-menu img {
     width: 60px;
