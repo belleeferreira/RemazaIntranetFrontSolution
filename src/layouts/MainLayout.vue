@@ -68,10 +68,10 @@
         </div>
         <div class="menu">
           <ul class="nav flex-column" id="nav_accordion">
-            <li disabled  class="nav-item">
-              <a class="nav-link" href="#">
+            <li class="nav-item">
+              <router-link class="nav-link" to="/home">
                 <img src="../assets/nav/home.png" alt=""> Home
-              </a>
+              </router-link>
             </li>
             <li disabled class="nav-item">
               <a class="nav-link" href="#">
@@ -79,11 +79,17 @@
                 Colaboradores </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link restaurante" href="#">
+              <router-link class="nav-link restaurante" to="/restaurante">
+              <img src="../assets/nav/utensils-solid.png" alt="">
+                Restaurante
+            </router-link>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link restaurante"  href="/restaurante">
                 <img src="../assets/nav/utensils-solid.png" alt="">
                 Restaurante
               </a>
-            </li>
+            </li> -->
             <li disabled class="nav-item">
               <a class="nav-link" href="#">
                 <img src="../assets/nav/bullhorn.png" alt=""> Comunicados e Avisos </a>
