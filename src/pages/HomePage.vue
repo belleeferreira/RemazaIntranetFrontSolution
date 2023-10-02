@@ -6,10 +6,10 @@
           <div class="col-sm-12 col-md-9 col-lg-9">
             <div class="row my-3">
               <div class="hello-user col-sm-12 col-md-12 col-lg-12">
-                <p>Olá, <span>[USUÁRIO]!</span> Seja bem-vindo(a)</p>
+                <p>Olá, <span>{{ userName }}!</span> Seja bem-vindo(a)</p>
                 <!-- parte de avisos -->
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                <div class="bg box p-3">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="restaurant-menu box p-3">
                   <p class="menu-day">Cardápio do dia</p>
                   <div>
                     <p class="menu-snack">Refeição do dia:</p>
@@ -28,7 +28,7 @@
                           <li>Pudim de nutella</li>
                         </ul>
                       </div>
-                      <img
+                      <img class="restaurante-img"
                         src="../assets/restaurante.png"
                         alt=""
                         width="150px"
@@ -95,11 +95,11 @@
                                     Inicio da estilizacção na linha 252 do CSS
                                     e finaliza na linha 307
                                 -->
-              <div class="col-sm-12 col-md-6 col-lg-6">
+              <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="box p-3 norms">
                   <p class="title-norms">Normas</p>
                   <table id="example" class="display" style="width: 100%">
-                    <thead>
+                    <thead class="title-head">
                       <tr>
                         <th class="title-table name-title">Nome</th>
                         <th class="title-table version-norms-title">Versão</th>
@@ -652,7 +652,7 @@
                                                                     9.08064
                                                                     10.0083
                                                                     9.08064
-                                                                    10.0083Z"
+                                                                   10.0083Z"
                               fill="#102155"
                             />
                           </svg>
@@ -917,11 +917,10 @@
           </div>
         </div>
       </section>
-
       <footer>
         <div class="row my-3">
           <div class="col-sm-12 col-md-12 col-lg-12">
-            <p class="fs-6">&copy; Copyright 1998-2022 Empresas Remaza</p>
+            <p class="fs-6">&copy; Copyright 1998-{{ currentYear }} Empresas Remaza</p>
           </div>
         </div>
       </footer>
@@ -930,12 +929,22 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   name: 'HomePage',
-  data () {
-    return {}
+  setup () {
+    const store = useStore()
+    const userName = computed(() => {
+      return localStorage.getItem('username')
+    })
+
+    return {
+      store,
+      userName,
+      currentYear: new Date().getFullYear()
+    }
   }
 })
 </script>
@@ -945,128 +954,75 @@ export default defineComponent({
 
 body {
   overflow-x: hidden;
+  overflow-y: scroll;
 }
-
-/* main {
-  padding-left: 300px;
-} */
 
 * {
   font-family: "Lato";
 }
 
-/*  Calendario  */
-.content-calendar {
-  background: var(--color-bg-gray);
-  height: 850px;
-  border-radius: 15px !important;
-}
-
-.content-calendar .box {
-  background: none;
-}
-.content-calendar .calendar-header {
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-.content-calendar .calendar-header .content-header-1 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.content-header-1 p {
-  color: var(--color-hover);
-  font-weight: bold;
-}
-.content-calendar .calendar-header .content-header-1 p {
-  margin-left: 5px;
-  margin-top: 15px;
-}
-.content-calendar .calendar-header .content-header-1 .arrows-calendar {
-  margin: 0px 0px 0px 25px;
-}
-
-.content-calendar .calendar-header .content-header-1 .arrows-calendar img {
-  padding-left: 15px;
-}
-
-.calendar-header {
-  justify-content: space-between !important;
-}
-
-/* botao do mes */
-.content-calendar .calendar-header .button-header .button-month {
-  padding: 1px 10px 1px 6px;
-  /* margin-left: 50px; */
-  height: 37px;
-}
-
-.content-calendar .calendar-header .button-header img {
-  margin-bottom: 3px;
-  padding: 5px;
-}
-
-.content-calendar .main-days-week {
-  margin: 10px 0 0 0;
-  width: 100%;
-  height: 50px;
-  display: flex;
-  flex-direction: column;
-  font-size: 12px;
+/* Main*/
+/* parte do bem vindo*/
+.row .hello-user > p {
+  color: var(--remaza-color-highlight, #F48120);
   font-weight: 400;
-}
-.content-calendar .main-days-week .conteiner-name-day,
-.content-calendar .main-days-week .conteiner-dayay {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+  font-size: 20px;
 }
 
-.name-day,
-.day {
-  height: 25px;
-  width: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-gray);
+/* a parte do nome do USUARIO*/
+.row .hello-user span {
+  font-weight: 700;
 }
-.content-calendar .main-days-week .nome-day-atual {
-  background-color: var(--color-highlight);
-  border-radius: 8px 8px 0 0;
-  color: white;
+
+/* classe da div do cardapio do day*/
+.restaurant-menu {
+  background: var(--remaza-color-linear, linear-gradient(180deg, #CBDAFC 15.9%, #D1E7F3 85.77%));
+  max-width: 100%;
+  height: 230px;
+  border-radius: 20px;
+  flex-shrink: 0;
 }
-.content-calendar .main-days-week .day-atual {
-  background-color: var(--color-highlight);
-  border-radius: 0px 0 8px 8px;
-  color: white;
+
+/* <li> do cardapio do day (BOLINHA)*/
+.menu-list {
+  color: #102155;
+  font-weight: bold;
+  padding-left: 15px;
+  font-size: 13px;
 }
-.weekend {
-  color: var(--color-highlight);
+
+.menu-day,
+.menu-dessert {
+  color: var(--color-hover);
+  font-family: "Lato";
+  font-weight: bold;
+  margin-bottom: 1px;
 }
-.event .theme {
-  color: var(--color-highlight);
-  font-size: 12px;
+
+.menu-day {
+  font-size: 20px;
+  color: var(--remaza-color-secondary, #102155);
   font-weight: bolder;
 }
-.event {
+
+/* <li> do cardapio do day/ paragrafo da refeiçao do day*/
+.menu-snack {
+  color: var(--color-hover);
   font-family: "Lato";
-  color: var(--color-secondary);
-}
-.main-days-week .day-event {
-  border: 1px solid var(--color-hover);
-  border-radius: 8px;
-}
-.event .horario {
-  font-size: 12px;
   font-weight: bold;
+  font-size: 16px;
 }
 
-/*         Content     */
+/* <li> do cardapio do day/sobremesa*/
+.menu-sobremesa {
+  font-size: 16px;
+}
+
+.restaurante-img{
+  margin-top: -120px;
+}
+
+/*Content */
 .norms {
   position: relative;
   background: linear-gradient(
@@ -1074,12 +1030,20 @@ body {
     var(--color-cor1) 15.9%,
     var(--color-cor2) 85.77%
   );
-  height: 315px;
+  max-width: 100%;
+  height: 230px;
+  flex-shrink: 0;
+  border-radius: 20px;
 }
+/* .title-head{
+  display: flex;
+  align-items: center;
+  justify-content:center ;
+} */
 .norms .title-norms {
-  color: var(--color-hover);
+  color: var(--remaza-color-secondary, #102155);
   font-size: 20px;
-  font-weight: bold;
+  font-weight: bolder;
 }
 .norms .title-norms #example {
   margin: 20px 0 0 0;
@@ -1096,6 +1060,11 @@ body {
   justify-content: center;
   height: 26px;
 }
+
+.version-norms{
+  padding-left: 20px;
+}
+
 .norms table tr .file-norms svg path:hover {
   fill: red;
   transition: 0.2s;
@@ -1117,7 +1086,7 @@ table.dataTable.display tbody td {
   font-weight: 500;
 }
 .norms table tr .version-norms-title {
-  padding-left: 20px;
+  padding-left: 300px;
 }
 .norms table tr .file-norms-titulo {
   border-radius: 0 4px 4px 0;
@@ -1131,168 +1100,14 @@ table.dataTable.display tbody td {
   font-weight: 500;
 }
 
-/*  Estilização da div Comunicados  */
-/* .box {
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
-}
-.row .box-announcements {
-  background: linear-gradient(
-    180deg,
-    var(--color-cor1) 15.9%,
-    var(--color-cor2) 85.77%
-  );
-}
-.row .box .announcements-title {
-  font-weight: bold;
-}
-.btn-check:focus + .btn,
-.btn:focus {
-  box-shadow: none;
-}
-.row .box .announcements-title {
-  color: var(--color-hover);
-  font-size: 20px;
-}
-.row .box .announcements-subtitle {
-  font-weight: bold;
-  color: var(--color-secondary);
-}
-.row .box .announcements-subtitle span {
-  font-weight: 400;
-  font-size: 13px;
-}
-.announcements-subtitle span a {
-  text-decoration: none;
-}
-.paginate_button {
-  display: none;
-} */
-
-/* Main*/
-/* parte do bem vindo*/
-.row .hello-user > p {
-  color: var(--color-hover);
-  font-weight: 400;
-  font-size: 20px;
-}
-
-/* a parte do nome do USUARIO*/
-/* .row .hello-user span {
-  font-weight: 700;
-} */
-
-/* backgroud da div do AVISO*/
-/* .row .warnings {
-  background-color: var(--color-highlight);
-}
-
- paragrafo do aviso, paragrafo do theme do aviso e paragrafos do day, horario e endereço
-.p-warnings,
-.p-warnings2 {
-  color: #f9f9f9;
-  font-family: "Lato";
-}
-
- paragrafo do aviso
-.p-warnings {
-  font-size: 29px;
-  font-weight: bold;
-}
-
-paragrafo do theme do aviso*
-.p-.p-warnings2 {
-  font-weight: 700;
-  font-size: 20px;
-} */
-
-/* classe da div do cardapio do day*/
-.bg {
-  background: linear-gradient(
-    180deg,
-    var(--color-cor1) 15.9%,
-    var(--color-cor2) 85.77%
-  );
-  height: 315px;
-}
-
-/* <li> do cardapio do day (BOLINHA)*/
-.menu-list {
-  color: #102155;
-  font-weight: bold;
-  padding-left: 15px;
-  font-size: 13px;
-}
-
-.menu-day,
-.menu-dessert {
-  color: var(--color-hover);
-  font-family: "Lato";
-  font-weight: bold;
-}
-
-.menu-day {
-  font-size: 20px;
-}
-
-/* <li> do cardapio do day/ paragrafo da refeiçao do day*/
-.menu-snack {
-  color: var(--color-hover);
-  font-family: "Lato";
-  font-weight: bold;
-  font-size: 16px;
-}
-
-/* <li> do cardapio do day/sobremesa*/
-.menu-sobremesa {
-  font-size: 16px;
-}
-
-/* @meday (max-width: 540px) {
-  header {
-    width: 100%;
-  }
-
-  main {
-    padding-left: 0;
-  }
-
-  #sidebar {
-    margin-top: 120px;
-  }
-
-  .sidebar {
-    position: relative;
-  }
-
-  #conteudo {
-    padding-top: 0;
-  }
-
-  .norms {
-    margin: 10px 0;
-  }
-} */
-
-/* @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
-
-body {
-  overflow-x: hidden;
-}
-
-main {
-  padding-left: 300px;
-}
-
-* {
-  font-family: "Lato";
-} */
-
 /*  Calendario  */
 
 .content-calendar {
   background: var(--color-bg-gray);
-  height: 850px;
+  height: 88vh;
+  max-width: 100%;
+  width: 291px;
+  margin-top: 20px;
   border-radius: 15px !important;
 }
 
@@ -1304,7 +1119,7 @@ main {
   height: 50px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  /* justify-content: space-around; */
 }
 .content-calendar .calendar-header .content-header-1 {
   display: flex;
@@ -1321,26 +1136,30 @@ main {
   margin-top: 15px;
 }
 .content-calendar .calendar-header .content-header-1 .arrows-calendar {
-  margin: 0px 0px 0px 25px;
+  margin: 10px 5px 0px 0px;
 }
 
 .content-calendar .calendar-header .content-header-1 .arrows-calendar img {
   padding-left: 15px;
 }
 
-.calendar-header {
+/* .calendar-header {
   justify-content: space-between !important;
-}
+} */
 
 /* botao do mes */
-.content-calendar .calendar-header .button-header .button-month {
-  padding: 1px 10px 1px 6px;
-  /* margin-left: 50px; */
+ .content-calendar .calendar-header .button-header .button-month {
+  /* padding: 1px 10px 1px 6px; */
+  /* margin-left: 50px;*/
+  flex-wrap: nowrap;
   height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .content-calendar .calendar-header .button-header img {
-  margin-bottom: 3px;
+  /* margin-bottom: 3px; */
   padding: 5px;
 }
 
@@ -1399,177 +1218,4 @@ main {
   font-size: 12px;
   font-weight: bold;
 }
-
-/*         Content     */
-.norms {
-  position: relative;
-  background: linear-gradient(
-    180deg,
-    var(--color-cor1) 15.9%,
-    var(--color-cor2) 85.77%
-  );
-  height: 315px;
-}
-.norms .title-norms {
-  color: var(--color-hover);
-  font-size: 20px;
-  font-weight: bold;
-}
-.norms .title-norms #example {
-  margin: 20px 0 0 0;
-}
-.norms table tr .version-norms {
-  position: relative;
-  left: 15px;
-}
-.norms table tr .file-norms {
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 26px;
-}
-.norms table tr .file-norms svg path:hover {
-  fill: red;
-  transition: 0.2s;
-}
-.norms table thead {
-  background: var(--color-hover);
-  color: white;
-}
-table.dataTable.no-footer,
-table.dataTable.row-border tbody th,
-table.dataTable.row-border tbody td,
-table.dataTable.display tbody th,
-table.dataTable.display tbody td {
-  border: none;
-}
-.norms table tr .title-table {
-  padding-left: 10px;
-  font-size: 13px;
-  font-weight: 500;
-}
-.norms table tr .version-norms-title {
-  padding-left: 20px;
-}
-.norms table tr .file-norms-title {
-  border-radius: 0 4px 4px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-right: 8px;
-}
-.norms table .name-title {
-  border-radius: 4px 0 0 4px;
-  font-weight: 500;
-}
-
-/*  Estilização da div Comunicados  */
-/* .box {
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
-}
-.row .box-announcements {
-  background: linear-gradient(
-    180deg,
-    var(--color-cor1) 15.9%,
-    var(--color-cor2) 85.77%
-  );
-}
-.row .box .announcements-title {
-  font-weight: bold;
-}
-.btn-check:focus + .btn,
-.btn:focus {
-  box-shadow: none;
-}
-.row .box .announcements-title {
-  color: var(--color-hover);
-  font-size: 20px;
-}
-.row .box .announcements-subtitle {
-  font-weight: bold;
-  color: var(--color-secondary);
-}
-.row .box .announcements-subtitle span {
-  font-weight: 400;
-  font-size: 13px;
-}
-.announcements-subtitle span a {
-  text-decoration: none;
-}
-.paginate_button {
-  display: none;
-} */
-
-/* @meday (max-width: 540px) {
-  header {
-    width: 100%;
-  }
-
-  main {
-    padding-left: 0;
-  }
-
-  #sidebar {
-    margin-top: 120px;
-  }
-
-  .sidebar {
-    position: relative;
-  }
-
-  #conteudo {
-    padding-top: 0;
-  }
-
-  .norms {
-    margin: 10px 0;
-  }
-} */
 </style>
-
-<!-- <template>
-  <q-page class="">
-      <q-form class="row justify-center" @submit="login()">
-        <p class="col-12 text-h5 text-center">Login</p>
-        <div class="col-md-4 col-ms-6 col-xs-10 q-gutter-y-sm">
-          <div class="full-width q-pt-md">
-            <q-btn label="Login" color="primary" class="full-width" outline rounded type="submit"/>
-          </div>
-        </div>
-      </q-form>
-  </q-page>
-  </template>
-
-<script>
-import { defineComponent } from 'vue'
-import msalInstance from '../auth'
-
-export default defineComponent({
-  name: 'IndexPage',
-  data () {
-    return {}
-  },
-  methods: {
-    login () {
-      const loginRequest = {
-        scopes: ['user.read'] // Add any additional scopes as needed
-      }
-
-      msalInstance.loginPopup(loginRequest).then(res => {
-        this.$router.push('/home')
-        alert('Logado com sucesso')
-        const token = res.accessToken
-        localStorage.setItem('access_token', token)
-        alert(token)
-        console.log(res)
-        // Guardar access (res.accessToken) token e refresh token (res.refreshToken) na store de token/access
-      })
-        .catch(erro => console.log(erro))
-    }
-  }
-})
-
-</script> -->

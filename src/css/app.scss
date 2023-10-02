@@ -10,7 +10,7 @@ body {
 }
 .structure-toolbar,
 .structure-header {
-    height: 55px;
+    height: 74px;
     background: #F9F9F9 !important;
 }
 
@@ -239,9 +239,9 @@ q-page{
     text-decoration: none;
 }
 
-.restaurante{
-    background-color: var(--remaza-color-tag, #DFEAFF);
-}
+// .restaurante{
+//     background-color: var(--remaza-color-tag, #DFEAFF);
+// }
 
 // parte do aisde (links)
 .menu a:active {

@@ -76,7 +76,7 @@ export default defineComponent({
 
 </script>
 
-<style>
+<style scoped>
 /* *{
   overflow: hidden;
   padding: 0;
